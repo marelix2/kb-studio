@@ -1,46 +1,11 @@
 import React, { PropsWithChildren, useState } from "react";
 import { Box, Button, styled, useMediaQuery, useTheme } from "@mui/material";
 
+import { scrollToElement } from "../utils";
 import { MenuDrawer } from "./MenuDrawer";
 import { MenuDrawerButton } from "./MenuDrawerButton";
-import { scrollToElement } from "../utils";
 
-const HeaderContainer = ({ children }: PropsWithChildren) => (
-  <Box
-    sx={({ palette, breakpoints }) => ({
-      [breakpoints.down("lg")]: {
-        height: 100,
-      },
-      [breakpoints.down("md")]: {
-        height: 61,
-      },
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      background: palette.background.default,
-      height: 120,
-      zIndex: 2,
-      borderBottomColor: palette.primary.main,
-      borderBottomWidth: 4,
-      borderBottomStyle: "solid",
-    })}
-  >
-    <Box
-      sx={({ palette }) => ({
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      })}
-    >
-      {children}
-    </Box>
-  </Box>
-);
+import { logoColor } from "@/assets";
 
 type MenuButtonProps = {
   selected: boolean;
@@ -91,7 +56,7 @@ export const Header = ({ menuItemSelected }: Props) => {
       index: 3,
     },
     {
-      id: "#contact",
+      id: "#portfolio",
       label: "portfolio",
       href: "/contact",
       index: 5,
@@ -122,7 +87,7 @@ export const Header = ({ menuItemSelected }: Props) => {
         }}
       >
         <img
-          src="src/assets/logo_color.png"
+          src={logoColor}
           alt="logo"
           width={md ? "60" : "120"}
           height={md ? "60" : "120"}
@@ -155,3 +120,41 @@ export const Header = ({ menuItemSelected }: Props) => {
     </HeaderContainer>
   );
 };
+
+const HeaderContainer = ({ children }: PropsWithChildren) => (
+  <Box
+    sx={({ palette, breakpoints }) => ({
+      [breakpoints.down("lg")]: {
+        height: 100,
+      },
+      [breakpoints.down("md")]: {
+        height: 61,
+      },
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: palette.background.default,
+      height: 120,
+      zIndex: 2,
+      borderBottomColor: palette.primary.main,
+      borderBottomWidth: 4,
+      borderBottomStyle: "solid",
+    })}
+  >
+    <Box
+      sx={({}) => ({
+        width: "100%",
+        maxWidth: 1440,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      })}
+    >
+      {children}
+    </Box>
+  </Box>
+);

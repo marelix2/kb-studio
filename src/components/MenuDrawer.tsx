@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { Box, Typography } from "@mui/material";
+
 import { scrollToElement } from "@/utils";
 
 type DrawerProps = {
