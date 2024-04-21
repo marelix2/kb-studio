@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 
+import { closeMenu, menuBurger } from "@/assets";
+
 type Props = {
   open: boolean;
   onClick: (value: boolean) => void;
@@ -12,7 +14,7 @@ type ButtonProps = {
 const MenuButton = ({ onClick }: ButtonProps) => (
   <Box sx={{ mr: 2 }}>
     <img
-      src="src/assets/menu_burger.svg"
+      src={menuBurger}
       alt="menu icon"
       width="28"
       height="21"
@@ -24,7 +26,7 @@ const MenuButton = ({ onClick }: ButtonProps) => (
 const CloseButton = ({ onClick }: ButtonProps) => (
   <Box sx={{ mr: 2 }}>
     <img
-      src="src/assets/close_menu.svg"
+      src={closeMenu}
       alt=" menu burger icon"
       width="24"
       height="24"

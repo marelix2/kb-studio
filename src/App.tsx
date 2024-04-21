@@ -1,4 +1,5 @@
 import { Footer, Header } from "./components";
+import { ThemeProvider } from "./providers/ThemeProvider";
 import {
   AboutMePage,
   ContactPage,
@@ -11,14 +12,16 @@ import {
 function App() {
   return (
     <>
-      <Header />
-      <LandingPage />
-      <AboutMePage />
-      <OffersPage />
-      <StagesPage />
-      <PortfolioPage />
-      <ContactPage />
-      <Footer />
+      <ThemeProvider>
+        <Header />
+        <LandingPage />
+        <AboutMePage />
+        <OffersPage />
+        <StagesPage />
+        <PortfolioPage />
+        <ContactPage />
+        <Footer />
+      </ThemeProvider>
     </>
   );
 }
