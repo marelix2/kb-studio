@@ -1,11 +1,18 @@
 import React, { PropsWithChildren, useState } from "react";
-import { Box, Button, styled, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  styled,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 import { scrollToElement } from "../utils";
 import { MenuDrawer } from "./MenuDrawer";
 import { MenuDrawerButton } from "./MenuDrawerButton";
 
-import { logoColor } from "@/assets";
+import { logoWhite } from "@/assets";
 
 type MenuButtonProps = {
   selected: boolean;
@@ -14,7 +21,8 @@ type MenuButtonProps = {
 const MenuButton = styled(Button)<MenuButtonProps>(
   ({ theme: { spacing, palette }, selected }) => ({
     marginRight: spacing(9),
-    textTransform: "none",
+    textTransform: "uppercase",
+    background: palette.background.default,
     color: selected ? palette.secondary.main : "black",
     "&:hover": {
       color: palette.primary.main,
@@ -72,51 +80,80 @@ export const Header = ({ menuItemSelected }: Props) => {
   return (
     <HeaderContainer>
       <Box
-        sx={({ spacing }) => ({
-          mx: spacing(3),
-          my: spacing(3),
-          cursor: "pointer",
+        sx={({}) => ({
+          width: "100%",
+          height: 120,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
         })}
-        onClick={() => {
-          // if (router.pathname === "/") {
-          //   scrollToElement({ id: "#hero", block: "start" });
-          // } else {
-          //   router.push("/");
-          //   setSelected(1);
-          // }
-        }}
       >
-        <img
-          src={logoColor}
-          alt="logo"
-          width={md ? "60" : "120"}
-          height={md ? "60" : "120"}
-        />
+        <Box
+          sx={({}) => ({
+            flex: 1,
+            display: "flex",
+            backgroundColor: `#A17D60CC`,
+            height: 120,
+            alignItems: "center",
+            justifyContent: "space-around",
+          })}
+        >
+          <Box
+            sx={({ spacing }) => ({
+              my: spacing(3),
+              cursor: "pointer",
+            })}
+            onClick={() => {
+              scrollToElement({ id: "#hero", block: "start" });
+            }}
+          >
+            <img
+              src={logoWhite}
+              alt="logo"
+              width={md ? "60" : "120"}
+              height={md ? "60" : "120"}
+            />
+          </Box>
+          <Typography
+            color="white"
+            variant="h1"
+            sx={{ textTransform: "uppercase", cursor: "default" }}
+          >
+            Projektowanie wnętrz
+          </Typography>
+        </Box>
+        {!md && (
+          <Box
+            sx={({}) => ({
+              backgroundColor: "white",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              flex: 1,
+            })}
+          >
+            {items.map(({ id, label, index }) => (
+              <MenuButton
+                key={id}
+                disableRipple
+                selected={selected === index}
+                onClick={() => {
+                  scrollToElement({ id, block: "start" });
+                  setSelected(index);
+                }}
+              >
+                {label}
+              </MenuButton>
+            ))}
+          </Box>
+        )}
+        {md && (
+          <Box>
+            <MenuDrawerButton open={menuOpen} onClick={setMenuOpen} />
+            <MenuDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
+          </Box>
+        )}
       </Box>
-      {!md && (
-        <Box>
-          {items.map(({ id, label, index }) => (
-            <MenuButton
-              key={id}
-              disableRipple
-              selected={selected === index}
-              onClick={() => {
-                scrollToElement({ id, block: "start" });
-                setSelected(index);
-                // href && router.push(href);
-              }}
-            >
-              {label}
-            </MenuButton>
-          ))}
-        </Box>
-      )}
-      {md && (
-        <Box>
-          <MenuDrawerButton open={menuOpen} onClick={setMenuOpen} />
-          <MenuDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
-        </Box>
-      )}
     </HeaderContainer>
   );
 };
@@ -130,31 +167,20 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
       [breakpoints.down("md")]: {
         height: 61,
       },
-      position: "fixed",
+      position: "relative",
       top: 0,
       left: 0,
       width: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: palette.background.default,
       height: 120,
       zIndex: 2,
-      borderBottomColor: palette.primary.main,
-      borderBottomWidth: 4,
-      borderBottomStyle: "solid",
+      // borderBottomColor: palette.primary.main,
+      // borderBottomWidth: 4,
+      // borderBottomStyle: "solid",
     })}
   >
-    <Box
-      sx={({}) => ({
-        width: "100%",
-        maxWidth: 1440,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-      })}
-    >
-      {children}
-    </Box>
+    {children}
   </Box>
 );

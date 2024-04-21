@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material";
 
+import { createTypography } from "./typography";
+
 export const theme = createTheme({
   palette: {
     primary: {
@@ -10,4 +12,5 @@ export const theme = createTheme({
       main: "#333333",
     },
   },
+  typography: createTypography("Arial"),
 });
