@@ -15,6 +15,82 @@ type DrawerItemProps = {
   onItemPress: () => void;
 };
 
+export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
+  const menuItems = [
+    {
+      id: "#home",
+      label: "Home",
+      href: "/",
+      index: 1,
+    },
+    {
+      id: "#projects",
+      label: "O mnie",
+      href: "/projects",
+      index: 2,
+    },
+    {
+      id: "#offer",
+      label: "Oferta",
+      href: "/offer",
+      index: 3,
+    },
+    {
+      id: "#blog",
+      label: "Porfolio",
+      href: "/blog",
+      index: 4,
+    },
+    {
+      id: "#contact",
+      label: "Kontakt",
+      href: "/contact",
+      index: 5,
+    },
+  ];
+
+  const submenu = [
+    {
+      id: "#privacy-policy",
+      label: "Polityka prywatności",
+      href: "/privacy-policy",
+      index: 1,
+    },
+  ];
+
+  return (
+    <Menu open={open}>
+      <MenuBody>
+        <MenuItems>
+          {menuItems.map((item) => (
+            <MenuDrawerItem
+              key={item.label}
+              item={item}
+              onItemPress={() => {
+                scrollToElement({ id: item.id });
+                onClose();
+                // item?.href && router.push(item?.href);
+              }}
+            />
+          ))}
+          <Divider />
+          {submenu.map((item) => (
+            <MenuDrawerItem
+              key={item.label}
+              item={item}
+              onItemPress={() => {
+                scrollToElement({ id: item.id });
+                onClose();
+                // item?.href && router.push(item?.href);
+              }}
+            />
+          ))}
+        </MenuItems>
+      </MenuBody>
+    </Menu>
+  );
+};
+
 const Menu = ({ open, children }: PropsWithChildren<{ open: boolean }>) => (
   <Box
     sx={({ palette }) => ({
@@ -102,79 +178,3 @@ const MenuDrawerItem = ({ item, onItemPress }: DrawerItemProps) => (
     </Box>
   </>
 );
-
-export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
-  const menuItems = [
-    {
-      id: "#home",
-      label: "Home",
-      href: "/",
-      index: 1,
-    },
-    {
-      id: "#projects",
-      label: "O mnie",
-      href: "/projects",
-      index: 2,
-    },
-    {
-      id: "#offer",
-      label: "Oferta",
-      href: "/offer",
-      index: 3,
-    },
-    {
-      id: "#blog",
-      label: "Porfolio",
-      href: "/blog",
-      index: 4,
-    },
-    {
-      id: "#contact",
-      label: "Kontakt",
-      href: "/contact",
-      index: 5,
-    },
-  ];
-
-  const submenu = [
-    {
-      id: "#privacy-policy",
-      label: "Polityka prywatności",
-      href: "/privacy-policy",
-      index: 1,
-    },
-  ];
-
-  return (
-    <Menu open={open}>
-      <MenuBody>
-        <MenuItems>
-          {menuItems.map((item) => (
-            <MenuDrawerItem
-              key={item.label}
-              item={item}
-              onItemPress={() => {
-                scrollToElement({ id: item.id });
-                onClose();
-                // item?.href && router.push(item?.href);
-              }}
-            />
-          ))}
-          <Divider />
-          {submenu.map((item) => (
-            <MenuDrawerItem
-              key={item.label}
-              item={item}
-              onItemPress={() => {
-                scrollToElement({ id: item.id });
-                onClose();
-                // item?.href && router.push(item?.href);
-              }}
-            />
-          ))}
-        </MenuItems>
-      </MenuBody>
-    </Menu>
-  );
-};
