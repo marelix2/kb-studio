@@ -79,25 +79,8 @@ export const Header = ({ menuItemSelected }: Props) => {
 
   return (
     <HeaderContainer>
-      <Box
-        sx={({}) => ({
-          width: "100%",
-          height: 120,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        })}
-      >
-        <Box
-          sx={({}) => ({
-            flex: 1,
-            display: "flex",
-            backgroundColor: `#A17D60CC`,
-            height: 120,
-            alignItems: "center",
-            justifyContent: "space-around",
-          })}
-        >
+      <InnerContainer>
+        <WebContainer>
           <Box
             sx={({ spacing }) => ({
               my: spacing(3),
@@ -121,7 +104,7 @@ export const Header = ({ menuItemSelected }: Props) => {
           >
             Projektowanie wnętrz
           </Typography>
-        </Box>
+        </WebContainer>
         {!md && (
           <Box
             sx={({}) => ({
@@ -153,14 +136,14 @@ export const Header = ({ menuItemSelected }: Props) => {
             <MenuDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
           </Box>
         )}
-      </Box>
+      </InnerContainer>
     </HeaderContainer>
   );
 };
 
 const HeaderContainer = ({ children }: PropsWithChildren) => (
   <Box
-    sx={({ palette, breakpoints }) => ({
+    sx={({ breakpoints }) => ({
       [breakpoints.down("lg")]: {
         height: 100,
       },
@@ -176,9 +159,34 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
       justifyContent: "center",
       height: 120,
       zIndex: 2,
-      // borderBottomColor: palette.primary.main,
-      // borderBottomWidth: 4,
-      // borderBottomStyle: "solid",
+    })}
+  >
+    {children}
+  </Box>
+);
+
+const InnerContainer = ({ children }: PropsWithChildren) => (
+  <Box
+    sx={({}) => ({
+      width: "100%",
+      height: 120,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+    })}
+  >
+    {children}
+  </Box>
+);
+const WebContainer = ({ children }: PropsWithChildren) => (
+  <Box
+    sx={({}) => ({
+      flex: 1,
+      display: "flex",
+      backgroundColor: `#A17D60CC`,
+      height: 120,
+      alignItems: "center",
+      justifyContent: "space-around",
     })}
   >
     {children}
