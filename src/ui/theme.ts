@@ -11,6 +11,10 @@ export const theme = createTheme({
     secondary: {
       main: "#333333",
     },
+    text: {
+      primary: "#333333",
+      secondary: "#ffffff",
+    },
   },
   typography: createTypography("Arial"),
 });
