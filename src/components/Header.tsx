@@ -52,9 +52,9 @@ export const Header = ({ menuItemSelected }: Props) => {
       index: 1,
     },
     {
-      id: "#projects",
+      id: "#about-me",
       label: "O mnie",
-      href: "/projects",
+      href: "/about-me",
       index: 2,
     },
     {

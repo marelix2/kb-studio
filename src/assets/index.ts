@@ -4,3 +4,4 @@ export { default as menuBurger } from "./menu_burger.svg";
 export { default as closeMenu } from "./close_menu.svg";
 export { default as Landing1 } from "./landing_1.webp";
 export * from "./icons";
+export { default as aboutMe1 } from "./about_me_1.webp";
