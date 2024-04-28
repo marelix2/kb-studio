@@ -12,7 +12,7 @@ export const Footer = () => {
           mb: 0,
         },
         mx: spacing(1),
-        mb: spacing(1),
+        my: spacing(1),
         background: palette.background.default,
       })}
     >

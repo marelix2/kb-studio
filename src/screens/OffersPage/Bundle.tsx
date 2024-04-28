@@ -46,14 +46,15 @@ const Title = styled(Typography)(({ theme: { palette, spacing } }) => ({
 const Subtitle = styled(Typography)(({ theme: { spacing } }) => ({
   cursor: "default",
   paddingBottom: spacing(4),
+  textAlign: "center",
 }));
 
-const BulletPointsWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
+const BulletPointsWrapper = styled(Box)(({ theme: { palette } }) => ({
   width: 420,
   backgroundColor: palette.primary.main,
   flex: 1,
 }));
-const BulletPointsWrapper2 = styled(Box)(({ theme: { palette, spacing } }) => ({
+const BulletPointsWrapper2 = styled(Box)(({ theme: { spacing } }) => ({
   padding: spacing(2),
   display: "flex",
   flexDirection: "column",
