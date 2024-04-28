@@ -18,8 +18,8 @@ export const createTypography = (
   },
   h3: {
     fontWeight: 400,
-    fontSize: "16px",
-    lineHeight: "18.4px",
+    fontSize: "24px",
+    lineHeight: "26.4px",
   },
   subtitle1: {
     fontWeight: 700,

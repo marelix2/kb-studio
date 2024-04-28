@@ -22,7 +22,7 @@ const MenuButton = styled(Button)<MenuButtonProps>(
   ({ theme: { spacing, palette }, selected }) => ({
     marginRight: spacing(9),
     textTransform: "uppercase",
-    background: palette.background.default,
+    background: "transparent",
     color: selected ? palette.secondary.main : "black",
     "&:hover": {
       color: palette.primary.main,
@@ -108,7 +108,7 @@ export const Header = ({ menuItemSelected }: Props) => {
         {!md && (
           <Box
             sx={({}) => ({
-              backgroundColor: "white",
+              backgroundColor: `#E1DAD1E6`,
               height: "100%",
               display: "flex",
               justifyContent: "center",
