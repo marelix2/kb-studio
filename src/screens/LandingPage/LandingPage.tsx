@@ -48,7 +48,6 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
   height: "100vh",
   minHeight: "900px",
   position: "relative",
-  top: -120,
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",

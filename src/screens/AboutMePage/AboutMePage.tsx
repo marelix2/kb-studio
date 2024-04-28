@@ -76,7 +76,9 @@ const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
 }));
 
 const Title = styled(Typography)(({ theme: { palette } }) => ({
+  paddingTop: 20,
   transform: "rotate(-90deg)",
+  transformOrigin: "left top",
   color: palette.text.secondary,
   cursor: "default",
 }));
@@ -86,7 +88,6 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
   height: "1080px",
   minHeight: "430px",
   position: "relative",
-  top: -120,
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",

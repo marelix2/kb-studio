@@ -150,7 +150,7 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
       [breakpoints.down("md")]: {
         height: 61,
       },
-      position: "relative",
+      position: "absolute",
       top: 0,
       left: 0,
       width: "100%",
