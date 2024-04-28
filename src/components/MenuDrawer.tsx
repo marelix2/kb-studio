@@ -24,7 +24,7 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
       index: 1,
     },
     {
-      id: "#projects",
+      id: "#about-me",
       label: "O mnie",
       href: "/projects",
       index: 2,
