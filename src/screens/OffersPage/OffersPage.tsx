@@ -133,9 +133,6 @@ const OffersWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   display: "flex",
   justifyContent: "center",
 
-  // [breakpoints.down(1440)]: {
-  //   flexDirection: "column",
-  // },
   [breakpoints.up(1441)]: {
     gap: spacing(4),
   },
