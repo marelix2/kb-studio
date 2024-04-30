@@ -5,3 +5,6 @@ export { default as closeMenu } from "./close_menu.svg";
 export { default as Landing1 } from "./landing_1.webp";
 export * from "./icons";
 export { default as aboutMe1 } from "./about_me_1.webp";
+export * from "./project_1";
+export * from "./project_2";
+export * from "./project_3";
