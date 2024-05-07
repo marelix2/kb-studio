@@ -29,11 +29,11 @@ export const ContactPage = () => {
         </SecondSectionWrapper>
         <SecondSectionWrapper>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <SocialImg src={phoneIcon} />
+            <SocialImg src={emailIcon} />
             <Typography variant="body1">+ 48 696 850 891</Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <SocialImg src={emailIcon} />
+            <SocialImg src={phoneIcon} />
             <Typography variant="body1">
               studioprojektowe.kb@gmail.com
             </Typography>
