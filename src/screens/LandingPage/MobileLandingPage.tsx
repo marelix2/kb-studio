@@ -1,32 +1,23 @@
 import React from "react";
-import { Box, styled, Typography } from "@mui/material";
-
-import { MobileLandingPage } from "./MobileLandingPage";
+import { Box, styled } from "@mui/material";
 
 import { facebookIcon, instagramIcon, Landing1 } from "@/assets";
-import { openInNewTab, useBreakpoints } from "@/utils";
+import { openInNewTab } from "@/utils";
 
 const FB_LINK = `https://www.facebook.com/profile.php?id=100089271181224`;
 const INSTAGRAM_LINK = `https://www.instagram.com/studioprojektowe_kb`;
 
-export const LandingPage = () => {
-  const { isMobile } = useBreakpoints();
-
-  if (isMobile) return <MobileLandingPage />;
-
+export const MobileLandingPage = () => {
   return (
     <MainContainer id="hero">
       <BottomContainer>
-        <Typography variant="h1" color="white" sx={{ fontSize: 64 }}>
-          K&B STUDIO
-        </Typography>
-        <SocialButton
-          src={facebookIcon}
-          onClick={() => openInNewTab({ url: FB_LINK })}
-        />
         <SocialButton
           src={instagramIcon}
           onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
+        />
+        <SocialButton
+          src={facebookIcon}
+          onClick={() => openInNewTab({ url: FB_LINK })}
         />
       </BottomContainer>
     </MainContainer>
@@ -34,15 +25,14 @@ export const LandingPage = () => {
 };
 
 const SocialButton = styled("img")(({ theme: {} }) => ({
-  width: 64,
-  height: 64,
+  width: 48,
+  height: 48,
   cursor: "pointer",
 }));
 
 const BottomContainer = styled(Box)(({ theme: { spacing } }) => ({
-  backgroundColor: `rgba(225, 218, 209, 0.8)`,
   width: "100%",
-  height: 250,
+  height: 200,
   display: "flex",
   justifyContent: "flex-end",
   padding: spacing(4),
@@ -59,5 +49,5 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
   alignItems: "flex-end",
   backgroundImage: `url(${Landing1})`,
   backgroundSize: "cover",
-  backgroundPosition: "50% 0",
+  backgroundPosition: "36% 0",
 }));
