@@ -26,7 +26,7 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
     {
       id: "#about-me",
       label: "O mnie",
-      href: "/projects",
+      href: "/about-me",
       index: 2,
     },
     {
@@ -36,25 +36,16 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
       index: 3,
     },
     {
-      id: "#blog",
-      label: "Porfolio",
-      href: "/blog",
-      index: 4,
+      id: "#portfolio",
+      label: "portfolio",
+      href: "/contact",
+      index: 5,
     },
     {
       id: "#contact",
       label: "Kontakt",
       href: "/contact",
       index: 5,
-    },
-  ];
-
-  const submenu = [
-    {
-      id: "#privacy-policy",
-      label: "Polityka prywatności",
-      href: "/privacy-policy",
-      index: 1,
     },
   ];
 
@@ -69,22 +60,10 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
               onItemPress={() => {
                 scrollToElement({ id: item.id });
                 onClose();
-                // item?.href && router.push(item?.href);
               }}
             />
           ))}
           <Divider />
-          {submenu.map((item) => (
-            <MenuDrawerItem
-              key={item.label}
-              item={item}
-              onItemPress={() => {
-                scrollToElement({ id: item.id });
-                onClose();
-                // item?.href && router.push(item?.href);
-              }}
-            />
-          ))}
         </MenuItems>
       </MenuBody>
     </Menu>
@@ -93,16 +72,16 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
 
 const Menu = ({ open, children }: PropsWithChildren<{ open: boolean }>) => (
   <Box
-    sx={({ palette }) => ({
+    sx={({}) => ({
       display: "auto",
       position: "fixed",
       transition: "all .5s ease-in-out",
-      background: palette?.primary.main,
+      backgroundColor: `#f9f8f6CC`,
       width: "100vw",
       visibility: open ? "unset" : "hidden",
       opacity: open ? 1 : 0,
       left: 4,
-      top: 61,
+      top: 71,
       zIndex: 2,
       height: open ? "100vh" : 0,
     })}
@@ -127,7 +106,7 @@ const MenuBody = ({ children }: PropsWithChildren) => (
   <Box
     sx={{
       display: "flex",
-      justifyContent: "flex-end",
+      justifyContent: "flex-start",
       alignItems: "center",
       height: "100% - 54px",
       width: "inherit",
@@ -169,8 +148,8 @@ const MenuDrawerItem = ({ item, onItemPress }: DrawerItemProps) => (
       >
         <Typography
           variant="button"
-          color="white"
-          sx={{ textTransform: "none" }}
+          color="secondary"
+          sx={{ textTransform: "uppercase" }}
         >
           {item.label}
         </Typography>

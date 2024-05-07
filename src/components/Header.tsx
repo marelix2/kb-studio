@@ -9,8 +9,7 @@ import {
 } from "@mui/material";
 
 import { scrollToElement } from "../utils";
-import { MenuDrawer } from "./MenuDrawer";
-import { MenuDrawerButton } from "./MenuDrawerButton";
+import { MobileHeader } from "./MobileHeader";
 
 import { logoWhite } from "@/assets";
 
@@ -80,62 +79,59 @@ export const Header = ({ menuItemSelected }: Props) => {
   return (
     <HeaderContainer>
       <InnerContainer>
-        <WebContainer>
-          <Box
-            sx={({ spacing }) => ({
-              my: spacing(3),
-              cursor: "pointer",
-            })}
-            onClick={() => {
-              scrollToElement({ id: "#hero", block: "start" });
-            }}
-          >
-            <img
-              src={logoWhite}
-              alt="logo"
-              width={md ? "60" : "120"}
-              height={md ? "60" : "120"}
-            />
-          </Box>
-          <Typography
-            color="white"
-            variant="h1"
-            sx={{ textTransform: "uppercase", cursor: "default" }}
-          >
-            Projektowanie wnętrz
-          </Typography>
-        </WebContainer>
         {!md && (
-          <Box
-            sx={({}) => ({
-              backgroundColor: `#E1DAD1E6`,
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              flex: 1,
-            })}
-          >
-            {items.map(({ id, label, index }) => (
-              <MenuButton
-                key={id}
-                disableRipple
-                selected={selected === index}
+          <>
+            <WebContainer>
+              <Box
+                sx={({ spacing }) => ({
+                  my: spacing(3),
+                  cursor: "pointer",
+                })}
                 onClick={() => {
-                  scrollToElement({ id, block: "start" });
-                  setSelected(index);
+                  scrollToElement({ id: "#hero", block: "start" });
                 }}
               >
-                {label}
-              </MenuButton>
-            ))}
-          </Box>
+                <img
+                  src={logoWhite}
+                  alt="logo"
+                  width={md ? "60" : "120"}
+                  height={md ? "60" : "120"}
+                />
+              </Box>
+              <Typography
+                color="white"
+                variant="h1"
+                sx={{ textTransform: "uppercase", cursor: "default" }}
+              >
+                Projektowanie wnętrz
+              </Typography>
+            </WebContainer>
+            <Box
+              sx={({}) => ({
+                backgroundColor: `#E1DAD1E6`,
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                flex: 1,
+              })}
+            >
+              {items.map(({ id, label, index }) => (
+                <MenuButton
+                  key={id}
+                  disableRipple
+                  selected={selected === index}
+                  onClick={() => {
+                    scrollToElement({ id, block: "start" });
+                    setSelected(index);
+                  }}
+                >
+                  {label}
+                </MenuButton>
+              ))}
+            </Box>
+          </>
         )}
-        {md && (
-          <Box>
-            <MenuDrawerButton open={menuOpen} onClick={setMenuOpen} />
-            <MenuDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
-          </Box>
-        )}
+        {md && <MobileHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} />}
       </InnerContainer>
     </HeaderContainer>
   );
@@ -167,9 +163,12 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
 
 const InnerContainer = ({ children }: PropsWithChildren) => (
   <Box
-    sx={({}) => ({
+    sx={({ breakpoints }) => ({
       width: "100%",
       height: 120,
+      [breakpoints.down("md")]: {
+        height: 61,
+      },
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
