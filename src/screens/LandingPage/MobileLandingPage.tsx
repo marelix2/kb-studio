@@ -35,6 +35,7 @@ const BottomContainer = styled(Box)(({ theme: { spacing } }) => ({
   height: 200,
   display: "flex",
   justifyContent: "flex-end",
+  alignItems: "flex-end",
   padding: spacing(4),
   gap: spacing(4),
 }));
@@ -42,7 +43,7 @@ const BottomContainer = styled(Box)(({ theme: { spacing } }) => ({
 const MainContainer = styled(Box)(({ theme: {} }) => ({
   maxWidth: "100%",
   height: "100vh",
-  minHeight: "900px",
+  minHeight: "812px",
   position: "relative",
   display: "flex",
   justifyContent: "center",
