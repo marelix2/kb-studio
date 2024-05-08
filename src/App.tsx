@@ -17,6 +17,7 @@ function App() {
       <ThemeProvider>
         <Header />
         <LandingPage />
+        <AboutMePage />
         <Box
           sx={({ breakpoints }) => ({
             [breakpoints.down("md")]: {
@@ -24,7 +25,6 @@ function App() {
             },
           })}
         >
-          <AboutMePage />
           <OffersPage />
           <StagesPage />
           <PortfolioPage />
