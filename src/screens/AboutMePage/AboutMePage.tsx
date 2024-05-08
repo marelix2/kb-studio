@@ -1,9 +1,16 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
+import { MobileLandingPage } from "./MobileAboutMePage";
+
 import { aboutMe1 } from "@/assets";
+import { useBreakpoints } from "@/utils";
 
 export const AboutMePage = () => {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) return <MobileLandingPage />;
+
   return (
     <MainContainer id="about-me">
       <ImageContainer />
