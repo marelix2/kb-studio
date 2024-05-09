@@ -1,3 +1,9 @@
 export { default as project_3_1 } from "./1.webp";
 export { default as project_3_2 } from "./2.webp";
 export { default as project_3_3 } from "./3.webp";
+export { default as project_3_2_1 } from "./3_1.webp";
+export { default as project_3_2_2 } from "./3_2.webp";
+export { default as project_3_2_3 } from "./3_3.webp";
+export { default as project_3_2_4 } from "./3_4.webp";
+export { default as project_3_2_5 } from "./3_5.webp";
+export { default as project_3_2_6 } from "./3_6.webp";

@@ -5,16 +5,31 @@ import { ProjectSection } from "./ProjectSection";
 
 import {
   project_1_1,
+  project_1_1_1,
+  project_1_1_2,
+  project_1_1_3,
+  project_1_1_4,
+  project_1_1_5,
+  project_1_1_6,
+  project_1_1_7,
   project_1_2,
   project_1_3,
   project_2_1,
   project_2_2,
+  project_2_2_1,
+  project_2_2_2,
+  project_2_2_3,
   project_2_3,
   project_2_4,
   project_2_5,
   project_2_6,
   project_3_1,
   project_3_2,
+  project_3_2_1,
+  project_3_2_2,
+  project_3_2_3,
+  project_3_2_4,
+  project_3_2_5,
   project_3_3,
 } from "@/assets";
 
@@ -42,17 +57,27 @@ export const PortfolioPage = () => {
 const projects = [
   {
     id: 1,
-    clientName: "Mirosław",
+    clientName: "Marzena",
     description:
-      "Profesjonalizm, dokładność, szybki kontakt i realizacja, możliwość dokonywania korekt w projekcie szybko i solidnie. Polecam.",
-    photos: [project_1_1, project_1_2, project_1_3],
+      "W krótkim czasie otrzymałam profesjonalnie przygotowane schematy i projekt niełatwego wnętrza, po drodze wiele super propozycji i porad na jego aranżację. Do tego świetny kontakt. Polecam gorąco!",
+    photos1: [project_1_1, project_1_2, project_1_3],
+    photos2: [
+      project_1_1_1,
+      project_1_1_2,
+      project_1_1_3,
+      project_1_1_4,
+      project_1_1_5,
+      project_1_1_6,
+      project_1_1_7,
+    ],
   },
   {
     id: 2,
-    clientName: "Aleksandra",
+    clientName: "Mirosław",
     description:
-      "Bardzo szybki i łatwy kontakt, przemiła obsługa i realizacja. Pani Karolina umiejętnie doradza w wielu aspektach na każdym etapie swojej pracy i solidnie podchodzi do danego zadania. Projekty są dopieszczone od początku do końca. Ogromnym atutem jest również możliwość dokonywania poprawek w trakcie realizacji projektu.",
-    photos: [
+      "Profesjonalizm, dokładność, szybki kontakt i realizacja, możliwość dokonywania korekt w projekcie szybko i solidnie. Polecam.",
+
+    photos1: [
       project_2_1,
       project_2_2,
       project_2_3,
@@ -60,13 +85,23 @@ const projects = [
       project_2_5,
       project_2_6,
     ],
+    photos2: [project_2_2_1, project_2_2_2, project_2_2_3],
   },
   {
     id: 3,
-    clientName: "Marzena",
+    clientName: "Aleksandra",
     description:
-      "W krótkim czasie otrzymałam profesjonalnie przygotowane schematy i projekt niełatwego wnętrza, po drodze wiele super propozycji i porad na jego aranżację. Do tego świetny kontakt. Polecam gorąco!",
-    photos: [project_3_1, project_3_2, project_3_3],
+      "Bardzo szybki i łatwy kontakt, przemiła obsługa i realizacja. Pani Karolina umiejętnie doradza w wielu aspektach na każdym etapie swojej pracy i solidnie podchodzi do danego zadania. Projekty są dopieszczone od początku do końca. Ogromnym atutem jest również możliwość dokonywania poprawek w trakcie realizacji projektu.",
+
+    photos1: [project_3_1, project_3_2, project_3_3],
+    photos2: [
+      project_3_2_1,
+      project_3_2_2,
+      project_3_2_3,
+      project_3_2_4,
+      project_3_2_5,
+      project_3_2_5,
+    ],
     isLastOne: true,
   },
 ];

@@ -8,31 +8,42 @@ type Props = {
   id: number;
   clientName: string;
   description: string;
-  photos: Array<string>;
+  photos1: Array<string>;
+  photos2: Array<string>;
   isLastOne?: boolean;
 };
 
 export const ProjectSection = ({
-  photos,
+  photos1,
+  photos2,
   description,
   clientName,
   isLastOne,
   id,
 }: Props) => {
-  const restOfPhotos = photos.filter((_, index) => index > 1);
+  const restOfPhotos1 = photos1.filter((_, index) => index > 0);
+  const restOfPhotos2 = photos2.filter((_, index) => index > 0);
 
   return (
     <SectionWrapper>
       <PhotosWrapper>
         <PhotoProvider>
-          <PhotoView src={photos[0]}>
-            <Image src={photos[0]} alt="" />
+          <PhotoView src={photos1[0]}>
+            <Image src={photos1[0]} alt="" />
           </PhotoView>
-          <PhotoView src={photos[1]}>
-            <Image src={photos[1]} alt="" />
+          {restOfPhotos1 &&
+            restOfPhotos1.map((photo, index) => (
+              <PhotoView key={index} src={photo}></PhotoView>
+            ))}
+        </PhotoProvider>
+      </PhotosWrapper>
+      <PhotosWrapper>
+        <PhotoProvider>
+          <PhotoView src={photos2[0]}>
+            <Image src={photos2[0]} alt="" />
           </PhotoView>
-          {restOfPhotos &&
-            restOfPhotos.map((photo, index) => (
+          {restOfPhotos2 &&
+            restOfPhotos2.map((photo, index) => (
               <PhotoView key={index} src={photo}></PhotoView>
             ))}
         </PhotoProvider>
