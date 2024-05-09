@@ -101,7 +101,14 @@ export const Header = ({ menuItemSelected }: Props) => {
               <Typography
                 color="white"
                 variant="h1"
-                sx={{ textTransform: "uppercase", cursor: "default" }}
+                sx={({ breakpoints }) => ({
+                  textTransform: "uppercase",
+                  cursor: "default",
+                  [breakpoints.down(1600)]: {
+                    fontSize: "35px",
+                    lineHeight: "40px",
+                  },
+                })}
               >
                 Projektowanie wnętrz
               </Typography>

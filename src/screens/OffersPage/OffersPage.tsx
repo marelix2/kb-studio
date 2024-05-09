@@ -26,6 +26,7 @@ export const OffersPage = () => {
           </BottomText>
         </BottomWrapper>
       </BundlesWrapper>
+      <Box sx={{ width: 160 }}></Box>
       <TitleWrapper>
         <Title variant="h1">OFERTA</Title>
       </TitleWrapper>
@@ -79,7 +80,10 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
 }));
 
 const Title = styled(Typography)(({ theme: { palette } }) => ({
-  paddingTop: 20,
+  position: "absolute",
+  top: 500,
+  left: 15,
+  width: 300,
   transform: "rotate(-90deg)",
   transformOrigin: "left top",
   color: palette.text.secondary,
@@ -89,6 +93,8 @@ const Title = styled(Typography)(({ theme: { palette } }) => ({
 const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
   width: 160,
   height: "100%",
+  position: "absolute",
+  right: 0,
   backgroundColor: palette.primary.main,
   display: "flex",
   alignItems: "center",

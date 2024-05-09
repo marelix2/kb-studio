@@ -47,6 +47,7 @@ export const PortfolioPage = () => {
           <ProjectSection {...project} key={project.id} />
         ))}
       </BundlesWrapper>
+      <Box sx={{ width: 160 }}></Box>
       <TitleWrapper>
         <Title variant="h1">PORTFOLIO</Title>
       </TitleWrapper>
@@ -118,7 +119,10 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
 }));
 
 const Title = styled(Typography)(({ theme: { palette } }) => ({
-  paddingTop: 20,
+  position: "absolute",
+  top: 690,
+  left: 15,
+  width: 300,
   transform: "rotate(-90deg)",
   transformOrigin: "left top",
   color: palette.text.secondary,
@@ -127,7 +131,9 @@ const Title = styled(Typography)(({ theme: { palette } }) => ({
 
 const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
   width: 160,
-  minHeight: "100vh",
+  height: "100%",
+  position: "absolute",
+  right: 0,
   backgroundColor: palette.primary.main,
   display: "flex",
   alignItems: "center",
