@@ -18,7 +18,7 @@ type DrawerItemProps = {
 export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
   const menuItems = [
     {
-      id: "#home",
+      id: "#hero",
       label: "Home",
       href: "/",
       index: 1,
@@ -82,7 +82,6 @@ const Menu = ({ open, children }: PropsWithChildren<{ open: boolean }>) => (
       opacity: open ? 1 : 0,
       left: 4,
       top: 71,
-      zIndex: 2,
       height: open ? "100vh" : 0,
     })}
   >
