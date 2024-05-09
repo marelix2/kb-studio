@@ -77,7 +77,7 @@ export const Header = ({ menuItemSelected }: Props) => {
   ];
 
   return (
-    <HeaderContainer>
+    <HeaderContainer menuOpen={menuOpen}>
       <InnerContainer>
         {!md && (
           <>
@@ -137,7 +137,10 @@ export const Header = ({ menuItemSelected }: Props) => {
   );
 };
 
-const HeaderContainer = ({ children }: PropsWithChildren) => (
+const HeaderContainer = ({
+  children,
+  menuOpen,
+}: PropsWithChildren<{ menuOpen: boolean }>) => (
   <Box
     sx={({ breakpoints }) => ({
       [breakpoints.down("lg")]: {
@@ -146,7 +149,7 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
       [breakpoints.down("md")]: {
         height: 61,
       },
-      position: "absolute",
+      position: menuOpen ? "fixed" : "absolute",
       top: 0,
       left: 0,
       width: "100%",
@@ -154,7 +157,7 @@ const HeaderContainer = ({ children }: PropsWithChildren) => (
       alignItems: "center",
       justifyContent: "center",
       height: 120,
-      zIndex: 2,
+      zIndex: 3,
     })}
   >
     {children}
