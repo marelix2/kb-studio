@@ -41,12 +41,12 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
     //   href: "/contact",
     //   index: 5,
     // },
-    // {
-    //   id: "#contact",
-    //   label: "Kontakt",
-    //   href: "/contact",
-    //   index: 5,
-    // },
+    {
+      id: "#contact",
+      label: "Kontakt",
+      href: "/contact",
+      index: 5,
+    },
   ];
 
   return (
