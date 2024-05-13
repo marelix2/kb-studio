@@ -26,7 +26,7 @@ export const Footer = () => {
             minHeight: "179px",
           },
           [breakpoints.down("sm")]: {
-            minHeight: "420px",
+            minHeight: "340px",
             flexDirection: "column",
           },
           minHeight: "184px",

@@ -60,6 +60,10 @@ export const createTypography = (
     fontStyle: "normal",
     fontSize: "22px",
     lineHeight: "33px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      lineHeight: "18px",
+    },
   },
   button: {
     fontFamily: `"Libre Baskerville", serif`,

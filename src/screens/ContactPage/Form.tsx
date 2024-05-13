@@ -150,7 +150,7 @@ export const Form = () => {
 const FormInput = styled(TextField)(
   ({ theme: { spacing, typography, breakpoints, palette } }) => ({
     [breakpoints.down("md")]: {
-      width: "328px",
+      width: "100%",
       marginLeft: 0,
     },
     ...typography.caption,
@@ -187,7 +187,7 @@ const FormInput = styled(TextField)(
 const FormButton = styled(Button)(
   ({ theme: { spacing, typography, palette, breakpoints } }) => ({
     [breakpoints.down("md")]: {
-      width: "328px",
+      width: "100%",
       marginLeft: 0,
     },
     ...typography.caption,
@@ -207,16 +207,23 @@ const FormButton = styled(Button)(
   })
 );
 
-const NativeForm = styled("form")(({ theme: { spacing } }) => ({
+const NativeForm = styled("form")(({ theme: { spacing, breakpoints } }) => ({
   flex: 1,
   padding: spacing(4),
+  [breakpoints.down("md")]: {
+    padding: spacing(2),
+  },
 }));
 
-const Wrapper = styled(Box)(({ theme: {} }) => ({
+const Wrapper = styled(Box)(({ theme: { breakpoints, spacing } }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   gap: "24px",
+  [breakpoints.down("md")]: {
+    gap: spacing(2),
+  },
+  position: "relative",
 }));
 
 const StatusWrapper = styled(Box)(({ theme: {} }) => ({

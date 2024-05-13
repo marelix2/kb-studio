@@ -28,8 +28,8 @@ function App() {
           <OffersPage />
           <StagesPage />
           <PortfolioPage />
-          <ContactPage />
         </Box>
+        <ContactPage />
         <Footer />
       </ThemeProvider>
     </>

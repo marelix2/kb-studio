@@ -2,10 +2,16 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { Form } from "./Form";
+import { MobileContactPage } from "./MobileContactPage";
 
 import { emailIcon, phoneIcon } from "@/assets";
+import { useBreakpoints } from "@/utils";
 
 export const ContactPage = () => {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) return <MobileContactPage />;
+
   return (
     <MainContainer id="contact">
       <ContactWrapper>
@@ -29,11 +35,11 @@ export const ContactPage = () => {
         </SecondSectionWrapper>
         <SecondSectionWrapper>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <SocialImg src={emailIcon} />
+            <SocialImg src={phoneIcon} />
             <Typography variant="body1">+ 48 696 850 891</Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <SocialImg src={phoneIcon} />
+            <SocialImg src={emailIcon} />
             <Typography variant="body1">
               studioprojektowe.kb@gmail.com
             </Typography>
@@ -130,6 +136,7 @@ const FirstSectionHeaderText = styled(Typography)(({ theme: { palette } }) => ({
 
 const SecondSectionWrapper = styled(Box)(({ theme: { spacing } }) => ({
   flex: 1,
+
   maxHeight: "50%",
   display: "flex",
   flexDirection: "column",
