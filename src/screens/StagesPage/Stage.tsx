@@ -45,6 +45,7 @@ const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
 const Title = styled(Typography)(({ theme: { palette, spacing } }) => ({
   color: palette.common.white,
   cursor: "default",
+  textTransform: "capitalize",
   paddingBottom: spacing(4),
   paddingTop: spacing(4),
 }));

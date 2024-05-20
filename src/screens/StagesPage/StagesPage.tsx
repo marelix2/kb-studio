@@ -1,9 +1,16 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
+import { MobileStagesPage } from "./MobileStagesPage";
 import { Stage } from "./Stage";
 
+import { useBreakpoints } from "@/utils";
+
 export const StagesPage = () => {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) return <MobileStagesPage stages={stages} />;
+
   return (
     <MainContainer id="stages">
       <Box sx={{ flex: 1 }}>
@@ -29,7 +36,7 @@ export const StagesPage = () => {
 
 const stages = [
   {
-    title: "Etap I",
+    title: "etap I",
     bulletPoints: [
       `Inwentaryzacja`,
       `Ustalenie układu funkcjonalnego`,
@@ -37,7 +44,7 @@ const stages = [
     ],
   },
   {
-    title: "Etap II",
+    title: "etap II",
     bulletPoints: [
       `Dokładne modelowanie bryły  3D`,
       `Dobranie wstępnych materiałów [zestawienie materiałów]`,
@@ -46,7 +53,7 @@ const stages = [
     ],
   },
   {
-    title: "Etap III",
+    title: "etap III",
     bulletPoints: [
       `Dokumentacja techniczna`,
       `Finalne wizualizacje 3D`,
