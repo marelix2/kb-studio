@@ -18,6 +18,7 @@ function App() {
         <Header />
         <LandingPage />
         <AboutMePage />
+        <StagesPage />
         <Box
           sx={({ breakpoints }) => ({
             [breakpoints.down("md")]: {
@@ -26,7 +27,6 @@ function App() {
           })}
         >
           <OffersPage />
-          <StagesPage />
           <PortfolioPage />
         </Box>
         <ContactPage />
