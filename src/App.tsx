@@ -27,8 +27,8 @@ function App() {
           })}
         >
           <OffersPage />
-          <PortfolioPage />
         </Box>
+        <PortfolioPage />
         <ContactPage />
         <Footer />
       </ThemeProvider>

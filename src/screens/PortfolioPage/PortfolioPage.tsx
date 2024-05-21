@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
+import { MobilePortfolioPage } from "./MobilePortfolioPage";
 import { ProjectSection } from "./ProjectSection";
 
 import {
@@ -32,8 +33,13 @@ import {
   project_3_2_5,
   project_3_3,
 } from "@/assets";
+import { useBreakpoints } from "@/utils";
 
 export const PortfolioPage = () => {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) return <MobilePortfolioPage projects={projects} />;
+
   return (
     <MainContainer id="portfolio">
       <BundlesWrapper>
