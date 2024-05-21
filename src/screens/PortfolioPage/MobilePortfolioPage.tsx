@@ -3,7 +3,18 @@ import { Box, styled, Typography } from "@mui/material";
 
 import { MobileProjectSection } from "./MobileProjectSection";
 
-export const MobilePortfolioPage = ({ projects }) => {
+type Props = {
+  projects: Array<{
+    id: number;
+    clientName: string;
+    description: string;
+    photos1: string[];
+    photos2: string[];
+    isLastOne?: undefined;
+  }>;
+};
+
+export const MobilePortfolioPage = ({ projects }: Props) => {
   return (
     <MainContainer id="contact">
       <InnerWrapper>
