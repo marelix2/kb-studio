@@ -10,7 +10,7 @@ type Props = {
     description: string;
     photos1: string[];
     photos2: string[];
-    isLastOne?: undefined;
+    isLastOne?: boolean;
   }>;
 };
 
@@ -106,7 +106,7 @@ const Title = styled(Typography)(({ theme: { palette } }) => ({
   cursor: "default",
 }));
 
-const SecondSectionWrapper = styled(Box)(({ theme: { spacing, palette } }) => ({
+const SecondSectionWrapper = styled(Box)(({ theme: { spacing } }) => ({
   flex: 1,
   display: "flex",
   flexDirection: "column",
