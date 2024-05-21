@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-
 import { Footer, Header } from "./components";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import {
@@ -18,16 +16,8 @@ function App() {
         <Header />
         <LandingPage />
         <AboutMePage />
+        <OffersPage />
         <StagesPage />
-        <Box
-          sx={({ breakpoints }) => ({
-            [breakpoints.down("md")]: {
-              display: "none",
-            },
-          })}
-        >
-          <OffersPage />
-        </Box>
         <PortfolioPage />
         <ContactPage />
         <Footer />
