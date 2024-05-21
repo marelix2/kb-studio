@@ -29,18 +29,18 @@ export const MenuDrawer = ({ open, onClose }: DrawerProps) => {
       href: "/about-me",
       index: 2,
     },
-    // {
-    //   id: "#offer",
-    //   label: "Oferta",
-    //   href: "/offer",
-    //   index: 3,
-    // },
-    // {
-    //   id: "#portfolio",
-    //   label: "portfolio",
-    //   href: "/contact",
-    //   index: 5,
-    // },
+    {
+      id: "#offer",
+      label: "Oferta",
+      href: "/offer",
+      index: 3,
+    },
+    {
+      id: "#portfolio",
+      label: "portfolio",
+      href: "/contact",
+      index: 5,
+    },
     {
       id: "#contact",
       label: "Kontakt",

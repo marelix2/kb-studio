@@ -16,7 +16,7 @@ type Props = {
 
 export const MobilePortfolioPage = ({ projects }: Props) => {
   return (
-    <MainContainer id="contact">
+    <MainContainer id="portfolio">
       <InnerWrapper>
         <TextContent>
           <ContactTitleWrapper>

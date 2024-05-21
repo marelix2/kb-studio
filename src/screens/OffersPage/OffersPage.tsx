@@ -2,8 +2,15 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { Bundle } from "./Bundle";
+import { MobileOffersPage } from "./MobileOffersPage";
+
+import { useBreakpoints } from "@/utils";
 
 export const OffersPage = () => {
+  const { isMobile } = useBreakpoints();
+
+  if (isMobile) return <MobileOffersPage offers={offers} />;
+
   return (
     <MainContainer id="offer">
       <BundlesWrapper>
