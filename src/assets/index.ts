@@ -3,6 +3,7 @@ export { default as logoWhite } from "./logo_white.png";
 export { default as menuBurger } from "./menu_burger.svg";
 export { default as closeMenu } from "./close_menu.svg";
 export { default as Landing1 } from "./landing_1.webp";
+export { default as LandingMobile1 } from "./landing_mobile_1.webp";
 export * from "./icons";
 export { default as aboutMe1 } from "./about_me_1.webp";
 export { default as aboutMe2 } from "./about_me_2.webp";

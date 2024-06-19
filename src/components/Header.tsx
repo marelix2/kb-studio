@@ -115,7 +115,7 @@ export const Header = ({ menuItemSelected }: Props) => {
             </WebContainer>
             <Box
               sx={({}) => ({
-                backgroundColor: `#E1DAD1E6`,
+                backgroundColor: `#f9f8f6C6`,
                 height: "100%",
                 display: "flex",
                 justifyContent: "center",
@@ -189,10 +189,10 @@ const InnerContainer = ({ children }: PropsWithChildren) => (
 );
 const WebContainer = ({ children }: PropsWithChildren) => (
   <Box
-    sx={({}) => ({
+    sx={({ palette }) => ({
       flex: 1,
       display: "flex",
-      backgroundColor: `#A17D60CC`,
+      backgroundColor: palette.primary.main,
       height: 120,
       alignItems: "center",
       justifyContent: "space-around",

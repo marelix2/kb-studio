@@ -105,7 +105,7 @@ const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
   height: "100%",
   position: "absolute",
   right: 0,
-  backgroundColor: palette.primary.main,
+  backgroundColor: palette.primary.light,
   display: "flex",
   alignItems: "center",
 }));
@@ -115,9 +115,11 @@ const Title = styled(Typography)(({ theme: { palette } }) => ({
   top: 300,
   left: 15,
   width: 200,
+  fontFamily: `"Montserrat", sans-serif`,
+  fontWeight: 400,
   transform: "rotate(-90deg)",
   transformOrigin: "left top",
-  color: palette.text.secondary,
+  color: palette.text.primary,
   cursor: "default",
 }));
 

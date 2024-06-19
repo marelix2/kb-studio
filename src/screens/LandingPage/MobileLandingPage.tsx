@@ -1,7 +1,11 @@
 import React from "react";
 import { Box, styled } from "@mui/material";
 
-import { facebookIcon, instagramIcon, Landing1 } from "@/assets";
+import {
+  facebookMobileIcon,
+  instagramMobileIcon,
+  LandingMobile1,
+} from "@/assets";
 import { openInNewTab } from "@/utils";
 
 const FB_LINK = `https://www.facebook.com/profile.php?id=100089271181224`;
@@ -12,11 +16,11 @@ export const MobileLandingPage = () => {
     <MainContainer id="hero">
       <BottomContainer>
         <SocialButton
-          src={instagramIcon}
+          src={instagramMobileIcon}
           onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
         />
         <SocialButton
-          src={facebookIcon}
+          src={facebookMobileIcon}
           onClick={() => openInNewTab({ url: FB_LINK })}
         />
       </BottomContainer>
@@ -48,7 +52,7 @@ const MainContainer = styled(Box)(({ theme: {} }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
-  backgroundImage: `url(${Landing1})`,
+  backgroundImage: `url(${LandingMobile1})`,
   backgroundSize: "cover",
   backgroundPosition: "36% 0",
 }));
