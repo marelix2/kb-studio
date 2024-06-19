@@ -17,16 +17,25 @@ export const LandingPage = () => {
   return (
     <MainContainer id="hero">
       <BottomContainer>
-        <Typography variant="h1" color="white" sx={{ fontSize: 64 }}>
+        <Typography
+          variant="h1"
+          color="primary"
+          sx={{
+            fontSize: 64,
+            letterSpacing: 10,
+            mt: "-10px",
+            cursor: "default",
+          }}
+        >
           K&B STUDIO
         </Typography>
         <SocialButton
-          src={facebookIcon}
-          onClick={() => openInNewTab({ url: FB_LINK })}
-        />
-        <SocialButton
           src={instagramIcon}
           onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
+        />
+        <SocialButton
+          src={facebookIcon}
+          onClick={() => openInNewTab({ url: FB_LINK })}
         />
       </BottomContainer>
     </MainContainer>
@@ -40,7 +49,7 @@ const SocialButton = styled("img")(({ theme: {} }) => ({
 }));
 
 const BottomContainer = styled(Box)(({ theme: { spacing } }) => ({
-  backgroundColor: `rgba(225, 218, 209, 0.8)`,
+  backgroundColor: `#f9f8f6c4`,
   width: "100%",
   height: 250,
   display: "flex",
