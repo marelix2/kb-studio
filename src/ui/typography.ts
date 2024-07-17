@@ -11,9 +11,8 @@ export const createTypography = (
   fontFamily,
   h1: {
     fontFamily: `"Libre Baskerville", serif`,
-    fontWeight: 700,
+    fontWeight: 400,
     fontStyle: "normal",
-
     fontSize: "60px",
     lineHeight: "90px",
     [theme.breakpoints.down("md")]: {
@@ -23,14 +22,18 @@ export const createTypography = (
   },
   h2: {
     fontFamily: `"Libre Baskerville", serif`,
-    fontWeight: 700,
+    fontWeight: 400,
     fontStyle: "normal",
-    fontSize: "20px",
-    lineHeight: "30px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+      lineHeight: "30px",
+    },
+    fontSize: "40px",
+    lineHeight: "46px",
   },
   h3: {
     fontFamily: `"Libre Baskerville", serif`,
-    fontWeight: 700,
+    fontWeight: 400,
     fontStyle: "normal",
     fontSize: "20px",
     lineHeight: "26px",
