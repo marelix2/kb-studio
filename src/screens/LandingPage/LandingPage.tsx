@@ -16,28 +16,48 @@ export const LandingPage = () => {
 
   return (
     <MainContainer id="hero">
-      <BottomContainer>
-        <Typography
-          variant="h1"
-          color="primary"
-          sx={{
-            fontSize: 64,
-            letterSpacing: 10,
-            mt: "-10px",
-            cursor: "default",
-          }}
-        >
-          K&B STUDIO
-        </Typography>
-        <SocialButton
-          src={instagramIcon}
-          onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
-        />
-        <SocialButton
-          src={facebookIcon}
-          onClick={() => openInNewTab({ url: FB_LINK })}
-        />
-      </BottomContainer>
+      <InnerWrapper>
+        <ImageContainer />
+        <LeftContainer>
+          <TopBox>
+            <Typography
+              variant="h1"
+              color="primary"
+              sx={{
+                fontSize: 96,
+                letterSpacing: 12,
+                cursor: "default",
+                lineHeight: 1.4,
+              }}
+            >
+              “Wnętrze, które wyraża Ciebie”
+            </Typography>
+          </TopBox>
+          <BottomBox>
+            <Typography
+              variant="h2"
+              color="primary"
+              sx={{
+                letterSpacing: 10,
+                cursor: "default",
+                alignItems: "flex-end",
+              }}
+            >
+              K&B STUDIO
+            </Typography>
+            <SocialsBox>
+              <SocialButton
+                src={facebookIcon}
+                onClick={() => openInNewTab({ url: FB_LINK })}
+              />
+              <SocialButton
+                src={instagramIcon}
+                onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
+              />
+            </SocialsBox>
+          </BottomBox>
+        </LeftContainer>
+      </InnerWrapper>
     </MainContainer>
   );
 };
@@ -48,25 +68,60 @@ const SocialButton = styled("img")(({ theme: {} }) => ({
   cursor: "pointer",
 }));
 
-const BottomContainer = styled(Box)(({ theme: { spacing } }) => ({
-  backgroundColor: `#f9f8f6c4`,
+const LeftContainer = styled(Box)(({ theme: { spacing } }) => ({
   width: "100%",
-  height: 250,
+  height: "720px",
   display: "flex",
-  justifyContent: "flex-end",
-  padding: spacing(4),
+  flexDirection: "column",
+  justifyContent: "space-between",
+  gap: spacing(4),
+  padding: spacing(2),
+}));
+
+const TopBox = styled(Box)(({ theme: { spacing } }) => ({
+  display: "flex",
+  justifyContent: "flex-start",
+  maxWidth: "200px",
   gap: spacing(4),
 }));
 
-const MainContainer = styled(Box)(({ theme: {} }) => ({
+const BottomBox = styled(Box)(({ theme: { spacing } }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  gap: spacing(2),
+}));
+const SocialsBox = styled(Box)(({ theme: { spacing } }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  gap: spacing(4),
+}));
+
+const ImageContainer = styled(Box)(({ theme: {} }) => ({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${Landing1})`,
+  backgroundSize: "cover",
+  backgroundPosition: "50% 0",
+}));
+
+const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
   maxWidth: "100%",
-  height: "100vh",
-  minHeight: "900px",
+  height: "720px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+  padding: spacing(4),
+}));
+
+const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+  maxWidth: "1920px",
+  height: "720px",
+  width: "100%",
   position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
-  backgroundImage: `url(${Landing1})`,
-  backgroundSize: "cover",
-  backgroundPosition: "50% 0",
+  gap: spacing(4),
 }));

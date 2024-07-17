@@ -100,7 +100,7 @@ export const Header = ({ menuItemSelected }: Props) => {
               </Box>
               <Typography
                 color="white"
-                variant="h1"
+                variant="h2"
                 sx={({ breakpoints }) => ({
                   textTransform: "uppercase",
                   cursor: "default",
@@ -149,20 +149,23 @@ const HeaderContainer = ({
   menuOpen,
 }: PropsWithChildren<{ menuOpen: boolean }>) => (
   <Box
-    sx={({ breakpoints }) => ({
+    sx={({ breakpoints, palette }) => ({
       [breakpoints.down("lg")]: {
         height: 100,
       },
       [breakpoints.down("md")]: {
         height: 61,
       },
-      position: menuOpen ? "fixed" : "absolute",
+      position: menuOpen ? "fixed" : "relative",
       top: 0,
       left: 0,
       width: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      borderBottomWidth: 1,
+      borderBottomStyle: "solid",
+      borderBottomColor: palette.primary.dark,
       height: 120,
       zIndex: 3,
     })}
