@@ -20,18 +20,9 @@ export const LandingPage = () => {
         <ImageContainer />
         <LeftContainer>
           <TopBox>
-            <Typography
-              variant="h1"
-              color="primary"
-              sx={{
-                fontSize: 96,
-                letterSpacing: 12,
-                cursor: "default",
-                lineHeight: 1.4,
-              }}
-            >
+            <HeroText variant="h1" color="primary">
               “Wnętrze, które wyraża Ciebie”
-            </Typography>
+            </HeroText>
           </TopBox>
           <BottomBox>
             <Typography
@@ -83,6 +74,12 @@ const TopBox = styled(Box)(({ theme: { spacing } }) => ({
   justifyContent: "flex-start",
   maxWidth: "200px",
   gap: spacing(4),
+}));
+const HeroText = styled(Typography)(({ theme: {} }) => ({
+  fontSize: 96,
+  letterSpacing: 12,
+  cursor: "default",
+  lineHeight: 1.4,
 }));
 
 const BottomBox = styled(Box)(({ theme: { spacing } }) => ({
