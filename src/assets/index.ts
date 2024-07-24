@@ -10,3 +10,5 @@ export { default as aboutMe2 } from "./about_me_2.webp";
 export * from "./project_1";
 export * from "./project_2";
 export * from "./project_3";
+export { default as arrowMedium } from "./arrow_medium.svg";
+export { default as arrowSmall } from "./arrow_small.svg";
