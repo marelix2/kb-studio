@@ -70,7 +70,7 @@ const ImageContainer = styled(Box)(({ theme: { breakpoints } }) => ({
 }));
 
 const TextContent = styled(Box)(({ theme: { spacing, palette } }) => ({
-  flex: 1,
+  flex: 8,
   display: "flex",
   zIndex: 2,
   flexDirection: "column",
