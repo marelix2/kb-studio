@@ -7,6 +7,7 @@ import {
   OffersPage,
   PortfolioPage,
   StagesPage,
+  YourInteriorPage,
 } from "./screens";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <ThemeProvider>
         <Header />
         <LandingPage />
+        <YourInteriorPage />
         <AboutMePage />
         <OffersPage />
         <StagesPage />
