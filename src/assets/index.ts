@@ -12,3 +12,5 @@ export * from "./project_2";
 export * from "./project_3";
 export { default as arrowMedium } from "./arrow_medium.svg";
 export { default as arrowSmall } from "./arrow_small.svg";
+export { default as yourInterior1 } from "./your_interior_1.webp";
+export { default as yourInterior2 } from "./your_interior_2.webp";
