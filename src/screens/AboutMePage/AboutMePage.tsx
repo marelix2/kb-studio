@@ -4,6 +4,7 @@ import { Box, styled, Typography } from "@mui/material";
 import { MobileLandingPage } from "./MobileAboutMePage";
 
 import { aboutMe1 } from "@/assets";
+import { PageHeader } from "@/components";
 import { useBreakpoints } from "@/utils";
 
 export const AboutMePage = () => {
@@ -13,11 +14,7 @@ export const AboutMePage = () => {
 
   return (
     <MainContainer id="about-me">
-      <HeaderWrapper>
-        <TitleText variant="h1" color="primary">
-          O MNIE
-        </TitleText>
-      </HeaderWrapper>
+      <PageHeader title={"O MINE"} />
       <InnerWrapper>
         <ImageWrapper>
           <ImageContainer />
@@ -87,24 +84,13 @@ const ImageContainer = styled(Box)(({ theme: {} }) => ({
 
 const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
   maxWidth: "100%",
-  height: 900,
+  minHeight: 900,
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   padding: spacing(4),
-}));
-
-const HeaderWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  maxWidth: "1920px",
-  width: "100%",
-  maxHeight: 200,
-  marginBottom: spacing(4),
-  position: "relative",
-  display: "flex",
-  borderBottomColor: palette.primary.dark,
-  borderBottomWidth: 1,
-  borderBottomStyle: "solid",
+  paddingBottom: spacing(12),
 }));
 
 const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
@@ -146,11 +132,3 @@ const NameAndTitle = styled(Typography)(
     },
   })
 );
-
-const TitleText = styled(Typography)(({ theme: {} }) => ({
-  fontSize: 96,
-  letterSpacing: 12,
-  cursor: "default",
-  lineHeight: 1.4,
-  fontFamily: `"Montserrat", sans-serif`,
-}));

@@ -6,6 +6,7 @@ import {
   LandingPage,
   OffersPage,
   PortfolioPage,
+  RenovationPlanPage,
   StagesPage,
   YourInteriorPage,
 } from "./screens";
@@ -18,6 +19,7 @@ function App() {
         <LandingPage />
         <YourInteriorPage />
         <AboutMePage />
+        <RenovationPlanPage />
         <OffersPage />
         <StagesPage />
         <PortfolioPage />
