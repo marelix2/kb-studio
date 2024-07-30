@@ -3,6 +3,7 @@ import { Box, styled, Typography } from "@mui/material";
 
 import { Bundle } from "./Bundle";
 
+import { PageHeader } from "@/components";
 import { useBreakpoints } from "@/utils";
 
 export const OffersPage = () => {
@@ -12,11 +13,7 @@ export const OffersPage = () => {
     <MainContainer id="offer">
       <InnerWrapper>
         <BundlesWrapper>
-          <HeaderWrapper>
-            <BundlesTitleWrapper>
-              <BundlesTitle variant="h1">Pakiety</BundlesTitle>
-            </BundlesTitleWrapper>
-          </HeaderWrapper>
+          <PageHeader title={"Pakiety"} />
           <OffersWrapper isMobile={isMobile}>
             {offers.map((offer) => (
               <Bundle {...offer} />
@@ -71,31 +68,6 @@ const BundlesWrapper = styled(Box)(({ theme: {} }) => ({
   alignItems: "center",
 }));
 
-const HeaderWrapper = styled(Box)(({ theme: {} }) => ({
-  width: "100%",
-  height: 120,
-  display: "flex",
-}));
-
-const BundlesTitleWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  flex: 1,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-start",
-  paddingLeft: spacing(2),
-  borderBottomWidth: 1,
-  borderBottomColor: palette.primary.main,
-  borderBottomStyle: "solid",
-}));
-
-const BundlesTitle = styled(Typography)(({ theme: { palette } }) => ({
-  color: palette.primary.main,
-  textTransform: "uppercase",
-  cursor: "default",
-  fontFamily: `"Montserrat", sans-serif`,
-  textAlign: "start",
-}));
-
 const OffersWrapper = styled(Box)<{ isMobile: boolean }>(
   ({ theme: { spacing }, isMobile }) => ({
     width: "100%",
@@ -123,7 +95,6 @@ const BottomText = styled(Typography)(({ theme: {} }) => ({
 
 const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
   maxWidth: "100%",
-
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",

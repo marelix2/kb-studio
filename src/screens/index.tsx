@@ -5,3 +5,4 @@ export * from "./OffersPage";
 export * from "./PortfolioPage";
 export * from "./StagesPage";
 export * from "./YourInteriorPage";
+export * from "./RenovationPlanPage";
