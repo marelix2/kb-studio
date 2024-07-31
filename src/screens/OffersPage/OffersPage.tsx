@@ -2,6 +2,9 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { Bundle } from "./Bundle";
+import { MaxiBundle } from "./MaxiBundle";
+import { MidiBundle } from "./MidiBundle";
+import { MiniBundle } from "./MiniBundle";
 
 import { PageHeader } from "@/components";
 import { useBreakpoints } from "@/utils";
@@ -10,25 +13,30 @@ export const OffersPage = () => {
   const { isMobile } = useBreakpoints();
 
   return (
-    <MainContainer id="offer">
-      <InnerWrapper>
-        <BundlesWrapper>
-          <PageHeader title={"Pakiety"} />
-          <OffersWrapper isMobile={isMobile}>
-            {offers.map((offer) => (
-              <Bundle {...offer} />
-            ))}
-          </OffersWrapper>
-          <BottomWrapper>
-            <BottomText variant="body1">
-              *możliwość indywidualnej wyceny za projekt lub mieszania pakietów.
-              Jeżeli nie jesteś pewna/ny, który pakiet jest dla Ciebie,
-              skontaktuj się ze mną, a wycenię projekt indywidualnie
-            </BottomText>
-          </BottomWrapper>
-        </BundlesWrapper>
-      </InnerWrapper>
-    </MainContainer>
+    <>
+      <MainContainer id="offer">
+        <InnerWrapper>
+          <BundlesWrapper>
+            <PageHeader title={"Pakiety"} />
+            <OffersWrapper isMobile={isMobile}>
+              {offers.map((offer) => (
+                <Bundle {...offer} />
+              ))}
+            </OffersWrapper>
+            <BottomWrapper>
+              <BottomText variant="body1">
+                *możliwość indywidualnej wyceny za projekt lub mieszania
+                pakietów. Jeżeli nie jesteś pewna/ny, który pakiet jest dla
+                Ciebie, skontaktuj się ze mną, a wycenię projekt indywidualnie
+              </BottomText>
+            </BottomWrapper>
+          </BundlesWrapper>
+        </InnerWrapper>
+      </MainContainer>
+      {!isMobile && <MiniBundle />}
+      {!isMobile && <MidiBundle />}
+      {!isMobile && <MaxiBundle />}
+    </>
   );
 };
 
@@ -39,6 +47,7 @@ const offers = [
       { title: `wycena za ilość wizualizacji`, cost: "400 zł/ujęcie" },
     ],
     arrowType: "medium",
+    id: "#mini-bundle",
   },
   {
     title: "MIDI",
@@ -47,6 +56,7 @@ const offers = [
       { title: `Projekt łazienki`, cost: "2200 zł" },
     ],
     arrowType: "small",
+    id: "#midi-bundle",
   },
   {
     title: "MAXI",
@@ -57,6 +67,7 @@ const offers = [
       },
     ],
     arrowType: "medium",
+    id: "#maxi-bundle",
   },
 ];
 
@@ -81,12 +92,15 @@ const OffersWrapper = styled(Box)<{ isMobile: boolean }>(
   })
 );
 
-const BottomWrapper = styled(Box)(({ theme: {} }) => ({
+const BottomWrapper = styled(Box)(({ theme: { breakpoints } }) => ({
   width: "100%",
-  height: 150,
+  height: 90,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  [breakpoints.down("md")]: {
+    height: 150,
+  },
 }));
 
 const BottomText = styled(Typography)(({ theme: {} }) => ({
