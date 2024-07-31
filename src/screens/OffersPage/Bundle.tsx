@@ -2,12 +2,13 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { arrowSmall } from "@/assets";
-import { useBreakpoints } from "@/utils";
+import { scrollToElement, useBreakpoints } from "@/utils";
 
 type Props = {
   title: string;
   bulletPoints: Array<BulletPoint>;
   arrowType: string;
+  id: string;
 };
 
 type BulletPoint = {
@@ -15,11 +16,15 @@ type BulletPoint = {
   cost: string;
 };
 
-export const Bundle = ({ title, bulletPoints, arrowType }: Props) => {
+export const Bundle = ({ title, bulletPoints, arrowType, id }: Props) => {
   const { isMobile } = useBreakpoints();
 
   return (
-    <BundleWrapper>
+    <BundleWrapper
+      onClick={() => {
+        scrollToElement({ id, block: "start" });
+      }}
+    >
       <Title variant="h2">{title}</Title>
       <BulletPointsWrapper isMobile={isMobile}>
         <BulletPointsWrapper2>
