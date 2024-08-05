@@ -65,6 +65,7 @@ export const useFormValues = () => {
     setEmailInvalid(false);
     setMessage("");
     setMessageInvalid(false);
+    setPhoneNumber("");
   };
 
   return {
