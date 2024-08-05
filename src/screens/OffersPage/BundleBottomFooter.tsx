@@ -29,10 +29,10 @@ export const BundleBottomFooter = () => {
 };
 
 const BundleFooterWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  maxWidth: "1920px",
   width: "100%",
   maxHeight: 200,
-  padding: spacing(2),
+  paddingTop: spacing(2),
+  paddingBottom: spacing(2),
   position: "relative",
   display: "flex",
   flexDirection: "column",
