@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { Box, Button, styled } from "@mui/material";
 
 import { BundleBottomFooter } from "./BundleBottomFooter";
+import { PDFDialog } from "./PDFDialog";
 import { TextBulletPoints } from "./TextBulletPoints";
 import { TextRow } from "./TextRow";
 
 import { PageHeader } from "@/components";
-import { PDFDialog } from "./PDFDialog";
 
 export const MidiBundle = () => {
   const [open, setOpen] = useState(false);
+  const [isBathroom, setIsBathroom] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,16 +45,30 @@ export const MidiBundle = () => {
                   ]}
                 />
               </TextWrapper>
-              {/* <SecondRow>
-                <Button onClick={handleClickOpen}>PROJEKT KUCHNI</Button>
-                <Button onClick={handleClickOpen}>PROJEKT ŁAZIENKI</Button>
-              </SecondRow> */}
+              <SecondRow>
+                <UIButton
+                  onClick={() => {
+                    handleClickOpen();
+                    setIsBathroom(false);
+                  }}
+                >
+                  PROJEKT KUCHNI
+                </UIButton>
+                <UIButton
+                  onClick={() => {
+                    handleClickOpen();
+                    setIsBathroom(true);
+                  }}
+                >
+                  PROJEKT ŁAZIENKI
+                </UIButton>
+              </SecondRow>
             </ContentWrapper>
             <BundleBottomFooter />
           </BundlesWrapper>
         </InnerWrapper>
       </MainContainer>
-      <PDFDialog onClose={handleClose} open={open} />
+      <PDFDialog onClose={handleClose} open={open} isBathroom={isBathroom} />
     </>
   );
 };
@@ -116,4 +131,15 @@ const SecondRow = styled(Box)(({ theme: { spacing, palette } }) => ({
   paddingLeft: spacing(4),
   gap: spacing(4),
   backgroundColor: palette.primary.light,
+}));
+
+const UIButton = styled(Button)(({ theme: { spacing, palette } }) => ({
+  textTransform: "uppercase",
+  borderWidth: 1,
+  borderColor: palette.primary.dark,
+  fontSize: "20px",
+  borderStyle: "solid",
+  padding: spacing(2),
+  minWidth: 240,
+  borderRadius: 0,
 }));

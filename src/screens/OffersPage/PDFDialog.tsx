@@ -1,28 +1,29 @@
-import { Button, styled, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Dialog from "@mui/material/Dialog";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import { styled } from "@mui/material";
+import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+
+import bathroom from "./bathroom.pdf";
+import kitchen from "./kitchen.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`;
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  isBathroom?: boolean;
 };
 
-export const PDFDialog = ({ onClose, open }: Props) => {
+export const PDFDialog = ({ onClose, open, isBathroom }: Props) => {
   const [numPages, setNumPages] = useState<number>();
-  const [pageNumber, setPageNumber] = useState<number>(1);
-
-  console.log(numPages);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
   };
 
   return (
-    <Dialog
+    <CustomDialog
       onClose={(e: React.SyntheticEvent, reason) => {
         e.stopPropagation();
         if (reason === "backdropClick") {
@@ -35,7 +36,10 @@ export const PDFDialog = ({ onClose, open }: Props) => {
       }}
     >
       <DialogContent>
-        {/* <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document
+          file={isBathroom ? bathroom : kitchen}
+          onLoadSuccess={onDocumentLoadSuccess}
+        >
           {Array.from(new Array(numPages), (el, index) => (
             <Page
               key={`page_${index + 1}`}
@@ -44,9 +48,9 @@ export const PDFDialog = ({ onClose, open }: Props) => {
               renderTextLayer={false}
             />
           ))}
-        </Document> */}
+        </Document>
       </DialogContent>
-    </Dialog>
+    </CustomDialog>
   );
 };
 
@@ -63,34 +67,19 @@ const DialogContent = styled(Box)(({ theme: { palette, spacing } }) => ({
   flex: 1,
 }));
 
-const Column = styled(Box)(({ theme: { palette, spacing } }) => ({
-  backgroundColor: palette.grey[700],
-  color: palette.text.secondary,
-  display: "flex",
-  flexDirection: "column",
-  maxWidth: 800,
-  minWidth: 400,
-  width: "fit-content",
-  alignItems: "center",
-  padding: spacing(2),
-  height: "auto",
-  flex: 1,
-  gap: spacing(2),
-}));
+const CustomDialog = styled(Dialog)(({ theme: {} }) => ({
+  scrollbarWidth: "auto",
+  scrollbarColor: "#272527 #363636",
+  ["&*::-webkit-scrollbar"]: { width: 16 },
+  [`&*::-webkit-scrollbar-track`]: {
+    background: "#363636",
+  },
 
-const ContentColumn = styled(Box)(({ theme: { palette, spacing } }) => ({
-  backgroundColor: palette.grey[700],
-  color: palette.text.secondary,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  maxWidth: 800,
-  minWidth: 400,
-  width: "fit-content",
-  padding: spacing(2),
-  height: "auto",
-  flex: 1,
-  gap: spacing(2),
+  [`&::-webkit-scrollbar-thumb`]: {
+    backgroundColor: `#272527`,
+    borderRadius: `10px`,
+    border: `3px solid #292929`,
+  },
 }));
 
 const ButtonsGroup = styled(Box)(({ theme: { spacing } }) => ({
