@@ -49,6 +49,7 @@ module.exports = {
               "!@heroicons/react/*",
               "!@testing-library/user-event/**",
               "!@mui/x-date-pickers/AdapterDateFns",
+              "!@mui/material/*",
               "!./*/**",
             ],
             message: "Maximum depth of imported stuff is 2",
