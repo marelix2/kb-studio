@@ -1,8 +1,8 @@
-import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { MobileStagesPage } from "./MobileStagesPage";
 import { Stage } from "./Stage";
+import { StageHeader } from "./StageHeader";
 
 import { useBreakpoints } from "@/utils";
 
@@ -13,30 +13,35 @@ export const StagesPage = () => {
 
   return (
     <MainContainer id="stages">
-      <Box sx={{ flex: 1 }}>
-        <HeaderWrapper>
-          <Placeholder />
-          <StagesTitleWrapper>
-            <StagesTitle variant="h1">ETAPY</StagesTitle>
-          </StagesTitleWrapper>
-        </HeaderWrapper>
-        <StagesWrapper>
-          {stages.map((stage) => (
-            <Stage {...stage} />
-          ))}
-        </StagesWrapper>
-      </Box>
-      <Box sx={{ width: 160 }}></Box>
-      <TitleWrapper>
-        <Title variant="h1">WSPÓŁPRACA</Title>
-      </TitleWrapper>
+      <InnerWrapper>
+        <BundlesWrapper>
+          <StageHeader title="ETAPY WSPÓŁPRACY" />
+          <StagesWrapper>
+            {stages.map((stage) => (
+              <Stage {...stage} />
+            ))}
+          </StagesWrapper>
+          <BottomWrapper>
+            <BottomTitleWrapper>
+              <Typography variant="h4">JAK PRACUJĘ?</Typography>
+              <Divider />
+              <Typography variant="h4">HYBRYDOWO</Typography>
+            </BottomTitleWrapper>
+            <BottomText variant="body2">
+              Oznacza to, że część rzeczy [np. inwentaryzacje, spotkania
+              materiałowe, omawianie funkcji, instalacji itp.] wykonuję
+              stacjonarnie, a pozostałe mailowo lub podczas spotkań online.
+            </BottomText>
+          </BottomWrapper>
+        </BundlesWrapper>
+      </InnerWrapper>
     </MainContainer>
   );
 };
 
 const stages = [
   {
-    title: "etap I",
+    title: "ETAP 1",
     bulletPoints: [
       `Inwentaryzacja`,
       `Ustalenie układu funkcjonalnego`,
@@ -44,7 +49,7 @@ const stages = [
     ],
   },
   {
-    title: "etap II",
+    title: "ETAP 2",
     bulletPoints: [
       `Dokładne modelowanie bryły  3D`,
       `Dobranie wstępnych materiałów [zestawienie materiałów]`,
@@ -53,7 +58,7 @@ const stages = [
     ],
   },
   {
-    title: "etap III",
+    title: "ETAP 3",
     bulletPoints: [
       `Dokumentacja techniczna`,
       `Finalne wizualizacje 3D`,
@@ -62,67 +67,77 @@ const stages = [
   },
 ];
 
-const MainContainer = styled(Box)(({ theme: {} }) => ({
+const BundlesWrapper = styled(Box)(({ theme: {} }) => ({
+  flex: 1,
+  height: "100%",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}));
+const BottomTitleWrapper = styled(Box)(({ theme: { spacing } }) => ({
+  width: "100%",
+  maxWidth: 1600,
+  flex: 1,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  paddingBottom: spacing(4),
+}));
+
+const BottomWrapper = styled(Box)(({ theme: { breakpoints, spacing } }) => ({
+  width: "100%",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: spacing(2),
+  justifyContent: "center",
+  [breakpoints.down("md")]: {
+    height: 150,
+  },
+}));
+
+const BottomText = styled(Typography)(({ theme: { spacing } }) => ({
+  cursor: "default",
+  maxWidth: 1600,
+  textAlign: "center",
+  paddingBottom: spacing(4),
+}));
+
+const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
   maxWidth: "100%",
-  height: "800px",
-  minHeight: "430px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+  padding: spacing(4),
+  backgroundColor: palette.background.paper,
+}));
+
+const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+  maxWidth: "1920px",
+
+  width: "100%",
   position: "relative",
   display: "flex",
-  flexDirection: "row",
   justifyContent: "center",
-  backgroundSize: "cover",
-  backgroundPosition: "50% 0",
+  alignItems: "flex-end",
+  gap: spacing(4),
 }));
 
-const Title = styled(Typography)(({ theme: { palette } }) => ({
-  position: "absolute",
-  top: 500,
-  left: 15,
-  width: 300,
-  transform: "rotate(-90deg)",
-  transformOrigin: "left top",
-  fontFamily: `"Montserrat", sans-serif`,
-  fontWeight: 400,
-  color: palette.text.primary,
-  cursor: "default",
-}));
-
-const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
-  width: 160,
-  height: "100%",
-  position: "absolute",
-  right: 0,
-  backgroundColor: palette.primary.light,
-  display: "flex",
-  alignItems: "center",
-}));
-
-const StagesWrapper = styled(Box)(({ theme: {} }) => ({
-  display: "flex",
-  alignItems: "center",
-}));
-
-const Placeholder = styled(Box)(({ theme: {} }) => ({
+const Divider = styled(Box)(({ theme: { palette } }) => ({
   flex: 1,
+  maxWidth: 500,
+  display: "flex",
+  flexDirection: "column",
+  borderTopColor: palette.primary.dark,
+  borderTopWidth: 1,
+  borderTopStyle: "solid",
 }));
 
-const StagesTitleWrapper = styled(Box)(({ theme: { palette } }) => ({
-  flex: 1,
-  backgroundColor: palette.primary.light,
+const StagesWrapper = styled(Box)(({ theme: { spacing } }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StagesTitle = styled(Typography)(({ theme: { palette } }) => ({
-  color: palette.primary.main,
-  textTransform: "uppercase",
-  cursor: "default",
-}));
-
-const HeaderWrapper = styled(Box)(({ theme: { palette } }) => ({
-  width: "100%",
-  height: 200,
-  display: "flex",
-  backgroundColor: palette.primary.main,
+  justifyContent: "space-evenly",
+  gap: spacing(6),
 }));

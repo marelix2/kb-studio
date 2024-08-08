@@ -5,3 +5,6 @@ export { default as phoneIcon } from "./phone.svg";
 export { default as phoneIconMobile } from "./phone_mobile.svg";
 export { default as instagramMobileIcon } from "./instagram_mobile.svg";
 export { default as facebookMobileIcon } from "./facebook_mobile.svg";
+export { default as dotPrimary } from "./dot-single-primary.svg";
+export { default as dotDark } from "./dot-single-dark.svg";
+export { default as dotLight } from "./dot-single-light.svg";

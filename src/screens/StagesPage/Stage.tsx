@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
+import { dotPrimary } from "@/assets";
+
 type Props = {
   title: string;
   bulletPoints: Array<string>;
@@ -11,12 +13,12 @@ export const Stage = ({ title, bulletPoints }: Props) => {
     <StageWrapper>
       <StageWrapper>
         <TitleWrapper>
-          <Title variant="h2">{title}</Title>
+          <Title variant="h4">{title}</Title>
         </TitleWrapper>
       </StageWrapper>
       <BulletPointsWrapper>
         {bulletPoints.map((bulletPoint) => (
-          <BulletPointText variant="body1" component="li">
+          <BulletPointText variant="body2" component="li">
             {bulletPoint}
           </BulletPointText>
         ))}
@@ -25,29 +27,28 @@ export const Stage = ({ title, bulletPoints }: Props) => {
   );
 };
 
-const StageWrapper = styled(Box)(({ theme: { palette } }) => ({
+const StageWrapper = styled(Box)(({ theme: {} }) => ({
   flex: 1,
-  backgroundColor: palette.primary.main,
+  width: 420,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
 }));
 
-const TitleWrapper = styled(Box)(({ theme: { palette } }) => ({
+const TitleWrapper = styled(Box)(({ theme: {} }) => ({
   width: 420,
-  backgroundColor: palette.primary.main,
-  height: 200,
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "flex-start",
 }));
 
 const Title = styled(Typography)(({ theme: { palette, spacing } }) => ({
-  color: palette.common.white,
+  color: palette.text.primary,
   cursor: "default",
   textTransform: "capitalize",
   paddingBottom: spacing(4),
   paddingTop: spacing(4),
+  fontWeight: 700,
 }));
 
 const BulletPointsWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
@@ -58,7 +59,7 @@ const BulletPointsWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: spacing(4),
+  gap: spacing(2),
 }));
 
 const BulletPointText = styled(Typography)(({ theme: { palette } }) => ({
@@ -66,4 +67,5 @@ const BulletPointText = styled(Typography)(({ theme: { palette } }) => ({
   cursor: "default",
   listStyleType: "circle",
   color: palette.text.primary,
+  listStyleImage: `url(${dotPrimary})`,
 })) as typeof Typography;
