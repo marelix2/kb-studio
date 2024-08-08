@@ -81,11 +81,3 @@ const CustomDialog = styled(Dialog)(({ theme: {} }) => ({
     border: `3px solid #292929`,
   },
 }));
-
-const ButtonsGroup = styled(Box)(({ theme: { spacing } }) => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  padding: spacing(1),
-  gap: spacing(1),
-}));

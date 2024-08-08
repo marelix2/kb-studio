@@ -3,6 +3,7 @@ import { Box, styled, Typography } from "@mui/material";
 
 import { TextRow } from "./TextRow";
 
+import { dotLight } from "@/assets";
 import { PageHeader } from "@/components";
 import { useBreakpoints } from "@/utils";
 
@@ -36,23 +37,23 @@ export const RenovationPlanPage = () => {
           <Typography variant="h2" color="primary" sx={{ mt: 4 }}>
             Jakie korzyści płyną ze współpracy ze mną?
           </Typography>
-          <Typography component="li">
+          <BulletPoint component="li" variant="body2">
             Redukcja ryzyka podejmowania nieprzemyślanych decyzji np.
             nieodpowiedni rozkład funkcjonalny lub błędnie rozmieszone punkty
             instalacji elektrycznej itp.
-          </Typography>
-          <Typography component="li">
+          </BulletPoint>
+          <BulletPoint component="li" variant="body2">
             Dokładne zapoznanie się z Twoimi potrzebami na bazie formularzy
             online
-          </Typography>
-          <Typography component="li">
+          </BulletPoint>
+          <BulletPoint component="li" variant="body2">
             Zyskasz świadomość o ergonomii w projektowaniu wnętrz oraz wiedzę
             techniczną i materiałową
-          </Typography>
-          <Typography component="li">
+          </BulletPoint>
+          <BulletPoint component="li" variant="body2">
             Tworzenie projektu według danego budżetu oraz współpraca w luźnej
             atmosferze
-          </Typography>
+          </BulletPoint>
         </Container>
       </InnerWrapper>
     </MainContainer>
@@ -98,3 +99,7 @@ const Border = styled(Box)(({ theme: {} }) => ({
   borderWidth: 1,
   borderStyle: "solid",
 }));
+
+const BulletPoint = styled(Typography)(({ theme: { palette } }) => ({
+  listStyleImage: `url(${dotLight})`,
+})) as typeof Typography;

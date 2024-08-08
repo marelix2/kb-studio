@@ -5,3 +5,8 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+* {
+  list-style: circle outside;
+  list-style-image: url("./assets/icons/dot-single-dark.svg");
+}
