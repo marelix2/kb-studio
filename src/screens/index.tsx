@@ -6,3 +6,4 @@ export * from "./PortfolioPage";
 export * from "./StagesPage";
 export * from "./YourInteriorPage";
 export * from "./RenovationPlanPage";
+export * from "./GalleryPage";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { arrowSmall } from "@/assets";
@@ -28,11 +28,11 @@ export const Bundle = ({ title, bulletPoints, arrowType, id }: Props) => {
       <Title variant="h2">{title}</Title>
       <BulletPointsWrapper isMobile={isMobile}>
         <BulletPointsWrapper2>
-          {bulletPoints.map(({ title, cost }) => (
-            <>
+          {bulletPoints.map(({ title, cost }, index) => (
+            <Fragment key={index}>
               <BulletPointTitle variant="h3">{title}</BulletPointTitle>
               <BulletPointText variant="h3">{cost}</BulletPointText>
-            </>
+            </Fragment>
           ))}
         </BulletPointsWrapper2>
         {!isMobile && (
@@ -68,16 +68,16 @@ const BulletPointTitle = styled(Typography)(({ theme: {} }) => ({
   textAlign: "center",
 }));
 
-const BulletPointsWrapper = styled(Box)<{ isMobile: boolean }>(
-  ({ theme: {}, isMobile }) => ({
-    width: 360,
-    minHeight: isMobile ? 320 : 450,
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: isMobile ? "center" : "unset",
-  })
-);
+const BulletPointsWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isMobile",
+})<{ isMobile: boolean }>(({ theme: {}, isMobile }) => ({
+  width: 360,
+  minHeight: isMobile ? 320 : 450,
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: isMobile ? "center" : "unset",
+}));
 const BulletPointsWrapper2 = styled(Box)(({ theme: { spacing } }) => ({
   display: "flex",
   flexDirection: "column",

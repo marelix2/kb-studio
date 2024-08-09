@@ -9,23 +9,20 @@ type Props = {
   clientName: string;
   description: string;
   photos1: Array<string>;
-  photos2: Array<string>;
-  isLastOne?: boolean;
+  isFirst?: boolean;
 };
 
 export const ProjectSection = ({
   photos1,
-  photos2,
   description,
   clientName,
-  isLastOne,
+  isFirst = false,
   id,
 }: Props) => {
   const restOfPhotos1 = photos1.filter((_, index) => index > 0);
-  const restOfPhotos2 = photos2.filter((_, index) => index > 0);
 
   return (
-    <SectionWrapper>
+    <SectionWrapper isFirst={isFirst}>
       <PhotosWrapper>
         <PhotoProvider>
           <PhotoView src={photos1[0]}>
@@ -37,20 +34,9 @@ export const ProjectSection = ({
             ))}
         </PhotoProvider>
       </PhotosWrapper>
-      <PhotosWrapper>
-        <PhotoProvider>
-          <PhotoView src={photos2[0]}>
-            <Image src={photos2[0]} alt="" />
-          </PhotoView>
-          {restOfPhotos2 &&
-            restOfPhotos2.map((photo, index) => (
-              <PhotoView key={index} src={photo}></PhotoView>
-            ))}
-        </PhotoProvider>
-      </PhotosWrapper>
-      <CommentWrapper index={id} isLastOne={isLastOne}>
-        <CommentInnerWrapper isLastOne={isLastOne} index={id}>
-          <Description variant="body1">{description}</Description>
+      <CommentWrapper index={id}>
+        <CommentInnerWrapper index={id}>
+          <Description variant="body2">{description}</Description>
           <ClientName variant="h2">{clientName}</ClientName>
         </CommentInnerWrapper>
       </CommentWrapper>
@@ -58,50 +44,50 @@ export const ProjectSection = ({
   );
 };
 
-const SectionWrapper = styled(Box)(({ theme: { palette } }) => ({
+const SectionWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isFirst",
+})<{ isFirst: boolean }>(({ theme: { palette, spacing }, isFirst }) => ({
   width: "100%",
   height: "fit-content",
   minHeight: 450,
-  backgroundColor: palette.light.main,
+
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  paddingTop: spacing(4),
+  paddingBottom: spacing(4),
+  borderTopWidth: isFirst ? 0 : 1,
+  borderTopStyle: "solid",
+  borderTopColor: palette.text.primary,
 }));
 
-const PhotosWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  flex: 3,
+const PhotosWrapper = styled(Box)(({ theme: { spacing } }) => ({
+  flex: 1,
   display: "flex",
   minHeight: 450,
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "flex-start",
   gap: spacing(4),
-  backgroundColor: palette.light.main,
 }));
 
 const CommentWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isLastOne" && prop !== "index",
-})<{ isLastOne?: boolean; index: number }>(
-  ({ theme: { palette, spacing }, index, isLastOne }) => ({
-    flex: 1,
-    minHeight: `calc(450px - ${index === 1 ? spacing(4) : "0px"})`,
-    backgroundColor: palette.primary.light,
-    paddingTop: index === 1 ? spacing(4) : 0,
-    paddingBottom: isLastOne ? spacing(4) : 0,
-    paddingLeft: spacing(4),
-    paddingRight: spacing(4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  })
-);
+})<{ index: number }>(({ theme: { spacing }, index }) => ({
+  flex: 1,
+  minHeight: `calc(450px - ${index === 1 ? spacing(4) : "0px"})`,
+  paddingLeft: spacing(4),
+  paddingRight: spacing(4),
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+}));
 
 const CommentInnerWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isLastOne" && prop !== "index",
 })<{ isLastOne?: boolean; index: number }>(
   ({ theme: { palette, spacing }, isLastOne, index }) => ({
     flex: 1,
-    backgroundColor: palette.primary.light,
     borderWidth: 2,
     borderTopWidth: index === 1 ? 2 : 0,
     borderBottomWidth: isLastOne ? 2 : 0,
@@ -125,15 +111,12 @@ const Description = styled(Typography)(({ theme: { palette, spacing } }) => ({
 const ClientName = styled(Typography)(({ theme: { palette } }) => ({
   cursor: "default",
   color: palette.text.primary,
+  alignSelf: "flex-end",
 })) as typeof Typography;
 
 const Image = styled("img")(({ theme: { breakpoints } }) => ({
-  width: 600,
+  width: 750,
   [breakpoints.down(1600)]: {
-    width: 450,
-  },
-
-  [breakpoints.down(1441)]: {
-    width: 400,
+    width: 650,
   },
 }));

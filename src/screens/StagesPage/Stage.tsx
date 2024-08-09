@@ -18,7 +18,7 @@ export const Stage = ({ title, bulletPoints }: Props) => {
       </StageWrapper>
       <BulletPointsWrapper>
         {bulletPoints.map((bulletPoint) => (
-          <BulletPointText variant="body2" component="li">
+          <BulletPointText variant="body2" component="li" key={bulletPoint}>
             {bulletPoint}
           </BulletPointText>
         ))}

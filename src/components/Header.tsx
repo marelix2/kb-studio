@@ -64,7 +64,7 @@ export const Header = ({ menuItemSelected }: Props) => {
     },
     {
       id: "#portfolio",
-      label: "portfolio",
+      label: "GALERIA",
       href: "/contact",
       index: 5,
     },

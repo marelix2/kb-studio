@@ -18,7 +18,7 @@ export const StagesPage = () => {
           <StageHeader title="ETAPY WSPÓŁPRACY" />
           <StagesWrapper>
             {stages.map((stage) => (
-              <Stage {...stage} />
+              <Stage {...stage} key={stage.title} />
             ))}
           </StagesWrapper>
           <BottomWrapper>
