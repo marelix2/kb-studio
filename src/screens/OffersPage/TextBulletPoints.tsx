@@ -14,7 +14,7 @@ export const TextBulletPoints = ({ counter, text, bulletPoints }: Props) => {
       <Box sx={{ flex: 1 }}>
         <Text variant="body2">{text}</Text>
         {bulletPoints.map((point) => (
-          <Typography variant="body1" component="li">
+          <Typography variant="body1" component="li" key={point}>
             {point}
           </Typography>
         ))}

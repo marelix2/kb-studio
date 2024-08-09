@@ -11,17 +11,22 @@ export const PageHeader = ({ title }: Props) => {
     </HeaderWrapper>
   );
 };
-const HeaderWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  maxWidth: "1920px",
-  width: "100%",
-  maxHeight: 200,
-  marginBottom: spacing(4),
-  position: "relative",
-  display: "flex",
-  borderBottomColor: palette.primary.dark,
-  borderBottomWidth: 1,
-  borderBottomStyle: "solid",
-}));
+const HeaderWrapper = styled(Box)(
+  ({ theme: { palette, spacing, breakpoints } }) => ({
+    maxWidth: "1920px",
+    width: "100%",
+    maxHeight: 200,
+    marginBottom: spacing(4),
+    position: "relative",
+    display: "flex",
+    borderBottomColor: palette.primary.dark,
+    borderBottomWidth: 1,
+    borderBottomStyle: "solid",
+    [breakpoints.down(1024)]: {
+      Height: 200,
+    },
+  })
+);
 
 const TitleText = styled(Typography)(({ theme: { breakpoints } }) => ({
   fontSize: 96,
@@ -32,8 +37,10 @@ const TitleText = styled(Typography)(({ theme: { breakpoints } }) => ({
   textTransform: "uppercase",
   [breakpoints.down(1441)]: {
     fontSize: 72,
+    lineHeight: 1.2,
   },
   [breakpoints.down("sm")]: {
     fontSize: 40,
+    lineHeight: 1.2,
   },
 }));

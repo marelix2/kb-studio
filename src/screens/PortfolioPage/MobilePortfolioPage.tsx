@@ -9,8 +9,6 @@ type Props = {
     clientName: string;
     description: string;
     photos1: string[];
-    photos2: string[];
-    isLastOne?: boolean;
   }>;
 };
 

@@ -20,7 +20,7 @@ export const OffersPage = () => {
             <PageHeader title={"Pakiety"} />
             <OffersWrapper isMobile={isMobile}>
               {offers.map((offer) => (
-                <Bundle {...offer} />
+                <Bundle {...offer} key={offer.id} />
               ))}
             </OffersWrapper>
             <BottomWrapper>
@@ -79,18 +79,18 @@ const BundlesWrapper = styled(Box)(({ theme: {} }) => ({
   alignItems: "center",
 }));
 
-const OffersWrapper = styled(Box)<{ isMobile: boolean }>(
-  ({ theme: { spacing }, isMobile }) => ({
-    width: "100%",
-    flex: 1,
-    display: "flex",
-    flexDirection: isMobile ? "column" : "row",
-    alignItems: isMobile ? "center" : "unset",
-    justifyContent: "space-evenly",
-    gap: spacing(2),
-    paddingTop: spacing(2),
-  })
-);
+const OffersWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isMobile",
+})<{ isMobile: boolean }>(({ theme: { spacing }, isMobile }) => ({
+  width: "100%",
+  flex: 1,
+  display: "flex",
+  flexDirection: isMobile ? "column" : "row",
+  alignItems: isMobile ? "center" : "unset",
+  justifyContent: "space-evenly",
+  gap: spacing(2),
+  paddingTop: spacing(2),
+}));
 
 const BottomWrapper = styled(Box)(({ theme: { breakpoints } }) => ({
   width: "100%",
