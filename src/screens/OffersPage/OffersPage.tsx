@@ -33,9 +33,9 @@ export const OffersPage = () => {
           </BundlesWrapper>
         </InnerWrapper>
       </MainContainer>
-      {!isMobile && <MiniBundle />}
-      {!isMobile && <MidiBundle />}
-      {!isMobile && <MaxiBundle />}
+      <MiniBundle />
+      <MidiBundle />
+      <MaxiBundle />
     </>
   );
 };
@@ -118,7 +118,6 @@ const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
 
 const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   maxWidth: "1920px",
-
   width: "100%",
   position: "relative",
   display: "flex",

@@ -1,22 +1,15 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { logoWhite } from "@/assets";
 import { ROUTES } from "@/routes";
 
-type MenuButtonProps = {
-  selected: boolean;
-};
-
 type Props = {
   menuItemSelected?: number;
 };
-export const Header = ({ menuItemSelected }: Props) => {
-  const [selected, setSelected] = useState<number | null>(
-    menuItemSelected ?? null
-  );
 
+export const Header = ({}: Props) => {
   const navigate = useNavigate();
 
   return (

@@ -111,13 +111,16 @@ const TextWrapper = styled(Box)(({ theme: { spacing } }) => ({
   gap: spacing(4),
 }));
 
-const ContentWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const ContentWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "100%",
   display: "flex",
   justifyContent: "space-evenly",
   paddingBottom: spacing(4),
   paddingLeft: spacing(4),
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+  },
 }));
 
 const SecondRow = styled(Box)(({ theme: { spacing, palette } }) => ({

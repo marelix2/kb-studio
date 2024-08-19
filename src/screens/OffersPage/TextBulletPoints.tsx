@@ -23,18 +23,28 @@ export const TextBulletPoints = ({ counter, text, bulletPoints }: Props) => {
   );
 };
 
-const Row = styled(Box)(({ theme: { spacing } }) => ({
+const Row = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   display: "flex",
   justifyContent: "space-evenly",
   alignItems: "center",
   width: "100%",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    gap: spacing(3),
+    alignItems: "flex-start",
+  },
 }));
 
 const CounterText = styled(Typography)(({ theme: { palette } }) => ({
   color: palette.text.secondary,
 }));
 
-const Text = styled(Typography)(({ theme: {} }) => ({
+const Text = styled(Typography)(({ theme: { breakpoints, spacing } }) => ({
   flex: 1,
+  [breakpoints.down("md")]: {
+    fontSize: "20px",
+    fontWeight: 700,
+    marginBottom: spacing(2),
+    flex: 3,
+  },
 }));

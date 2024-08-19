@@ -61,7 +61,6 @@ const DialogContent = styled(Box)(({ theme: { palette, spacing } }) => ({
   maxWidth: 1440,
   minWidth: 400,
   width: "fit-content",
-
   padding: spacing(2),
   height: "auto",
   flex: 1,
