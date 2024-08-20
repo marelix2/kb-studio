@@ -15,7 +15,7 @@ const HeaderWrapper = styled(Box)(
   ({ theme: { palette, spacing, breakpoints } }) => ({
     maxWidth: "1920px",
     width: "100%",
-    maxHeight: 200,
+
     marginBottom: spacing(4),
     position: "relative",
     display: "flex",

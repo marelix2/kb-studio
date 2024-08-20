@@ -154,7 +154,7 @@ const HeaderContainer = ({
         height: 100,
       },
       [breakpoints.down("md")]: {
-        height: 61,
+        height: 81,
       },
       position: menuOpen ? "fixed" : "relative",
       top: 0,
