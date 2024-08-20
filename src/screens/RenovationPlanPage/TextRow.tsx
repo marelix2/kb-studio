@@ -15,10 +15,13 @@ export const TextRow = ({ counter, text }: Props) => {
   );
 };
 
-const Row = styled(Box)(({ theme: {} }) => ({
+const Row = styled(Box)(({ theme: { breakpoints, spacing } }) => ({
   display: "flex",
   justifyContent: "space-evenly",
   alignItems: "center",
+  [breakpoints.down("md")]: {
+    gap: spacing(1),
+  },
 }));
 
 const CounterText = styled(Typography)(({ theme: { palette } }) => ({

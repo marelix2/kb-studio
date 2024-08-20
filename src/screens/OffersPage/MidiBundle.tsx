@@ -99,8 +99,7 @@ const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   gap: spacing(4),
 }));
 
-const TextWrapper = styled(Box)(({ theme: { spacing } }) => ({
-  flex: 1,
+const TextWrapper = styled(Box)(({ theme: { spacing, palette } }) => ({
   maxWidth: "100%",
   display: "flex",
   flexDirection: "column",
@@ -109,6 +108,7 @@ const TextWrapper = styled(Box)(({ theme: { spacing } }) => ({
   paddingBottom: spacing(4),
   paddingLeft: spacing(4),
   gap: spacing(4),
+  backgroundColor: palette.primary.light,
 }));
 
 const ContentWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
@@ -116,7 +116,7 @@ const ContentWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   display: "flex",
   justifyContent: "space-evenly",
   paddingBottom: spacing(4),
-  paddingLeft: spacing(4),
+
   gap: spacing(4),
   [breakpoints.down("md")]: {
     flexDirection: "column",
@@ -131,7 +131,7 @@ const SecondRow = styled(Box)(({ theme: { spacing, palette } }) => ({
   justifyContent: "center",
   alignItems: "flex-start",
   paddingBottom: spacing(4),
-  paddingLeft: spacing(4),
+
   gap: spacing(4),
   backgroundColor: palette.primary.light,
 }));
