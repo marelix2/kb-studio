@@ -1,9 +1,13 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
-import { MobileLandingPage } from "./MobileLandingPage";
-
-import { facebookIcon, instagramIcon, Landing1 } from "@/assets";
+import {
+  facebookIcon,
+  facebookMobileIcon,
+  instagramIcon,
+  instagramMobileIcon,
+  Landing1,
+} from "@/assets";
 import { openInNewTab, useBreakpoints } from "@/utils";
 
 const FB_LINK = `https://www.facebook.com/profile.php?id=100089271181224`;
@@ -12,7 +16,7 @@ const INSTAGRAM_LINK = `https://www.instagram.com/studioprojektowe_kb`;
 export const LandingPage = () => {
   const { isMobile } = useBreakpoints();
 
-  if (isMobile) return <MobileLandingPage />;
+  // if (isMobile) return <MobileLandingPage />;
 
   return (
     <MainContainer id="hero">
@@ -38,11 +42,11 @@ export const LandingPage = () => {
             </Typography>
             <SocialsBox>
               <SocialButton
-                src={facebookIcon}
+                src={isMobile ? facebookMobileIcon : facebookIcon}
                 onClick={() => openInNewTab({ url: FB_LINK })}
               />
               <SocialButton
-                src={instagramIcon}
+                src={isMobile ? instagramMobileIcon : instagramIcon}
                 onClick={() => openInNewTab({ url: INSTAGRAM_LINK })}
               />
             </SocialsBox>
@@ -59,15 +63,24 @@ const SocialButton = styled("img")(({ theme: {} }) => ({
   cursor: "pointer",
 }));
 
-const LeftContainer = styled(Box)(({ theme: { spacing } }) => ({
-  width: "100%",
-  height: "720px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  gap: spacing(4),
-  padding: spacing(2),
-}));
+const LeftContainer = styled(Box)(
+  ({ theme: { spacing, breakpoints, palette } }) => ({
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    gap: spacing(4),
+    padding: spacing(2),
+    [breakpoints.down("md")]: {
+      borderTopWidth: 1,
+      borderTopStyle: "solid",
+      padding: 0,
+      paddingTop: spacing(2),
+      borderColor: palette.primary.main,
+      paddingBottom: spacing(2),
+    },
+  })
+);
 
 const TopBox = styled(Box)(({ theme: { spacing } }) => ({
   display: "flex",
@@ -93,7 +106,7 @@ const SocialsBox = styled(Box)(({ theme: { spacing } }) => ({
   gap: spacing(4),
 }));
 
-const ImageContainer = styled(Box)(({ theme: {} }) => ({
+const ImageContainer = styled(Box)(({ theme: { breakpoints } }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
@@ -101,18 +114,24 @@ const ImageContainer = styled(Box)(({ theme: {} }) => ({
   backgroundImage: `url(${Landing1})`,
   backgroundSize: "cover",
   backgroundPosition: "50% 0",
+  [breakpoints.down("md")]: {
+    height: 390,
+  },
 }));
 
-const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
+const MainContainer = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "100%",
   height: "720px",
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
   padding: spacing(4),
+  [breakpoints.down("md")]: {
+    height: "auto",
+  },
 }));
 
-const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const InnerWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "1920px",
   height: "720px",
   width: "100%",
@@ -121,4 +140,9 @@ const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   justifyContent: "center",
   alignItems: "flex-end",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+    height: "fit-content",
+    gap: spacing(2),
+  },
 }));
