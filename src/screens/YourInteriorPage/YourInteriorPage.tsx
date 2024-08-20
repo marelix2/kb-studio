@@ -2,13 +2,8 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { yourInterior1, yourInterior2 } from "@/assets";
-import { useBreakpoints } from "@/utils";
 
 export const YourInteriorPage = () => {
-  const { isMobile } = useBreakpoints();
-
-  if (isMobile) return null;
-
   return (
     <MainContainer>
       <InnerWrapper>
@@ -19,7 +14,7 @@ export const YourInteriorPage = () => {
             </MainText>
           </TopBox>
           <BottomBox>
-            <Typography variant="body2">
+            <Typography color="primary" variant="body2">
               Projekt wnętrza to dokładne zapoznanie się z Twoimi potrzebami,
               aby tworzona przestrzeń była odzwierciedleniem Ciebie
             </Typography>
@@ -51,11 +46,14 @@ const TopBox = styled(Box)(({ theme: { spacing } }) => ({
   maxWidth: "200px",
   gap: spacing(4),
 }));
-const MainText = styled(Typography)(({ theme: {} }) => ({
+const MainText = styled(Typography)(({ theme: { breakpoints } }) => ({
   fontSize: 96,
   letterSpacing: 12,
   cursor: "default",
   lineHeight: 1.4,
+  [breakpoints.down("md")]: {
+    letterSpacing: 8,
+  },
 }));
 
 const BottomBox = styled(Box)(({ theme: { spacing } }) => ({
@@ -69,49 +67,67 @@ const ImageContainer = styled(Box)(({ theme: {} }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-around",
-
   width: "100%",
   height: "100%",
   flex: 4,
 }));
 
-const TopImage = styled(Box)(({ theme: {} }) => ({
+const TopImage = styled(Box)(({ theme: { breakpoints } }) => ({
   width: "100%",
   height: 300,
   backgroundImage: `url(${yourInterior1})`,
   backgroundSize: "cover",
   backgroundPosition: "50% center",
+  [breakpoints.down("md")]: {
+    height: 150,
+  },
 }));
 
-const BottomImage = styled(Box)(({ theme: {} }) => ({
+const BottomImage = styled(Box)(({ theme: { breakpoints } }) => ({
   width: "100%",
   height: 420,
   backgroundImage: `url(${yourInterior2})`,
   backgroundSize: "cover",
   backgroundPosition: "50% center",
+  [breakpoints.down("md")]: {
+    height: 180,
+  },
 }));
 
-const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
-  maxWidth: "100%",
-  height: "900px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "flex-end",
-  padding: spacing(4),
-  paddingTop: spacing(12),
-  backgroundColor: palette.primary.light,
-}));
+const MainContainer = styled(Box)(
+  ({ theme: { spacing, palette, breakpoints } }) => ({
+    maxWidth: "100%",
+    height: "900px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    padding: spacing(4),
+    paddingTop: spacing(12),
+    backgroundColor: palette.primary.light,
+    [breakpoints.down("md")]: {
+      height: "fit-content",
+      paddingTop: spacing(8),
+    },
+  })
+);
 
-const InnerWrapper = styled(Box)(({ theme: { spacing, palette } }) => ({
-  maxWidth: "1920px",
-  height: "900px",
-  width: "100%",
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: spacing(4),
-  borderTopColor: palette.primary.dark,
-  borderTopWidth: 1,
-  borderTopStyle: "solid",
-}));
+const InnerWrapper = styled(Box)(
+  ({ theme: { spacing, palette, breakpoints } }) => ({
+    maxWidth: "1920px",
+    height: "900px",
+    width: "100%",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: spacing(4),
+    borderTopColor: palette.primary.dark,
+    borderTopWidth: 1,
+    borderTopStyle: "solid",
+    [breakpoints.down("md")]: {
+      flexDirection: "column",
+      height: "fit-content",
+      gap: spacing(2),
+    },
+  })
+);

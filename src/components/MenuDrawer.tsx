@@ -76,7 +76,7 @@ const Menu = ({ open, children }: PropsWithChildren<{ open: boolean }>) => (
       display: "auto",
       position: "fixed",
       transition: "all .5s ease-in-out",
-      backgroundColor: `#f9f8f6CC`,
+      backgroundColor: `#333333CC`,
       width: "100vw",
       visibility: open ? "unset" : "hidden",
       opacity: open ? 1 : 0,
@@ -147,8 +147,10 @@ const MenuDrawerItem = ({ item, onItemPress }: DrawerItemProps) => (
       >
         <Typography
           variant="button"
-          color="secondary"
-          sx={{ textTransform: "uppercase" }}
+          sx={({ palette }) => ({
+            textTransform: "uppercase",
+            color: palette.text.secondary,
+          })}
         >
           {item.label}
         </Typography>

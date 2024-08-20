@@ -4,6 +4,9 @@ import { Box, styled, Typography } from "@mui/material";
 import { MenuDrawer } from "./MenuDrawer";
 import { MenuDrawerButton } from "./MenuDrawerButton";
 
+import { logoWhite } from "@/assets";
+import { scrollToElement } from "@/utils";
+
 type Props = {
   menuOpen: boolean;
   setMenuOpen: (v: boolean) => void;
@@ -13,13 +16,27 @@ export const MobileHeader = ({ menuOpen, setMenuOpen }: Props) => {
   return (
     <WebContainer>
       <TextWrapper>
-        <Typography color="secondary" variant="h1">
-          K&B STUDIO
-        </Typography>
+        <Box
+          sx={({}) => ({
+            cursor: "pointer",
+          })}
+          onClick={() => {
+            scrollToElement({ id: "#hero", block: "start" });
+          }}
+        >
+          <img src={logoWhite} alt="logo" width={"60"} height={"60"} />
+        </Box>
         <Typography
-          color="secondary"
+          sx={({ palette }) => ({
+            textTransform: "uppercase",
+            cursor: "default",
+            color: palette.text.secondary,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            maxWidth: 200,
+          })}
           variant="h3"
-          sx={{ textTransform: "uppercase", cursor: "default" }}
         >
           projektowanie wnętrz
         </Typography>
@@ -34,13 +51,13 @@ export const MobileHeader = ({ menuOpen, setMenuOpen }: Props) => {
 
 const WebContainer = ({ children }: PropsWithChildren) => (
   <Box
-    sx={({}) => ({
+    sx={({ palette }) => ({
       flex: 1,
       display: "flex",
-      backgroundColor: `#f9f8f6CC`,
-      height: 80,
+      backgroundColor: palette.primary.main,
+      height: 81,
       alignItems: "center",
-      justifyContent: "space-around",
+      justifyContent: "center",
     })}
   >
     {children}
@@ -52,9 +69,8 @@ const DrawerWrapper = styled(Box)(({ theme: {} }) => ({
 }));
 
 const TextWrapper = styled(Box)(({ theme: {} }) => ({
-  flex: 7,
+  flex: 6,
   display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
+
   alignItems: "center",
 }));
