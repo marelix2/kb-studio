@@ -5,13 +5,8 @@ import { TextRow } from "./TextRow";
 
 import { dotLight } from "@/assets";
 import { PageHeader } from "@/components";
-import { useBreakpoints } from "@/utils";
 
 export const RenovationPlanPage = () => {
-  const { isMobile } = useBreakpoints();
-
-  if (isMobile) return null;
-
   return (
     <MainContainer>
       <PageHeader title={"Planujesz remont, ale..."} />
@@ -34,7 +29,19 @@ export const RenovationPlanPage = () => {
         </Container>
         <Border />
         <Container>
-          <Typography variant="h2" color="primary" sx={{ mt: 4 }}>
+          <Typography
+            variant="h2"
+            color="primary"
+            sx={({ breakpoints }) => ({
+              mt: 4,
+              [breakpoints.down("md")]: {
+                mt: 0,
+                pt: 2,
+                borderTopWidth: 1,
+                borderTopStyle: "solid",
+              },
+            })}
+          >
             Jakie korzyści płyną ze współpracy ze mną?
           </Typography>
           <BulletPoint component="li" variant="body2">
@@ -60,29 +67,38 @@ export const RenovationPlanPage = () => {
   );
 };
 
-const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
-  maxWidth: "100%",
-  minHeight: 900,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: spacing(4),
-  backgroundColor: palette.primary.light,
-}));
+const MainContainer = styled(Box)(
+  ({ theme: { spacing, palette, breakpoints } }) => ({
+    maxWidth: "100%",
+    minHeight: 900,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: spacing(4),
+    backgroundColor: palette.primary.light,
+    [breakpoints.down("md")]: {
+      padding: spacing(2),
+    },
+  })
+);
 
-const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const InnerWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "1920px",
-  height: "720px",
   width: "100%",
   position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "flex-end",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+    height: "fit-content",
+    gap: spacing(1),
+  },
 }));
 
-const Container = styled(Box)(({ theme: { spacing } }) => ({
+const Container = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   width: "100%",
   height: "720px",
   display: "flex",
@@ -91,6 +107,10 @@ const Container = styled(Box)(({ theme: { spacing } }) => ({
   flex: 1,
   padding: spacing(8),
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    padding: spacing(2),
+    maxWidth: 320,
+  },
 }));
 
 const Border = styled(Box)(({ theme: {} }) => ({
@@ -100,6 +120,6 @@ const Border = styled(Box)(({ theme: {} }) => ({
   borderStyle: "solid",
 }));
 
-const BulletPoint = styled(Typography)(({ theme: { palette } }) => ({
+const BulletPoint = styled(Typography)(({ theme: {} }) => ({
   listStyleImage: `url(${dotLight})`,
 })) as typeof Typography;

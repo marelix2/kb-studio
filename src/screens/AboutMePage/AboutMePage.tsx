@@ -1,17 +1,10 @@
 import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
-import { MobileLandingPage } from "./MobileAboutMePage";
-
 import { aboutMe1 } from "@/assets";
 import { PageHeader } from "@/components";
-import { useBreakpoints } from "@/utils";
 
 export const AboutMePage = () => {
-  const { isMobile } = useBreakpoints();
-
-  if (isMobile) return <MobileLandingPage />;
-
   return (
     <MainContainer id="about-me">
       <PageHeader title={"O MINE"} />
@@ -50,7 +43,7 @@ export const AboutMePage = () => {
   );
 };
 
-const LeftContainer = styled(Box)(({ theme: { spacing } }) => ({
+const LeftContainer = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   width: "100%",
   height: "720px",
   display: "flex",
@@ -61,18 +54,27 @@ const LeftContainer = styled(Box)(({ theme: { spacing } }) => ({
   paddingBottom: spacing(4),
   paddingLeft: spacing(8),
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    paddingTop: spacing(1),
+    gap: spacing(2),
+  },
 }));
 
-const ImageWrapper = styled(Box)(({ theme: {} }) => ({
+const ImageWrapper = styled(Box)(({ theme: { breakpoints } }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
   height: "100%",
   flex: 3,
   position: "relative",
+  [breakpoints.down("md")]: {
+    alignItems: "flex-start",
+    marginRight: "20px",
+    justifyContent: "flex-start",
+  },
 }));
 
-const ImageContainer = styled(Box)(({ theme: {} }) => ({
+const ImageContainer = styled(Box)(({ theme: { breakpoints } }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
@@ -80,9 +82,15 @@ const ImageContainer = styled(Box)(({ theme: {} }) => ({
   backgroundImage: `url(${aboutMe1})`,
   backgroundSize: "cover",
   backgroundPosition: "50% center",
+  [breakpoints.down("md")]: {
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    width: 250,
+    height: 320,
+  },
 }));
 
-const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
+const MainContainer = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "100%",
   minHeight: 900,
   display: "flex",
@@ -91,9 +99,12 @@ const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
   alignItems: "center",
   padding: spacing(4),
   paddingBottom: spacing(12),
+  [breakpoints.down("md")]: {
+    paddingBottom: spacing(6),
+  },
 }));
 
-const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const InnerWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "1920px",
   height: "720px",
   width: "100%",
@@ -102,14 +113,21 @@ const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   justifyContent: "center",
   alignItems: "flex-end",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column-reverse",
+    gap: spacing(1),
+  },
 }));
 
 const TextSectionTitle = styled(Typography)(
-  ({ theme: { palette, spacing } }) => ({
+  ({ theme: { palette, spacing, breakpoints } }) => ({
     color: palette.primary.main,
     marginBottom: spacing(4),
     cursor: "default",
     textTransform: "uppercase",
+    [breakpoints.down("md")]: {
+      marginBottom: spacing(1),
+    },
   })
 );
 
@@ -129,6 +147,10 @@ const NameAndTitle = styled(Typography)(
     [breakpoints.down(1441)]: {
       bottom: "27%",
       left: "57%",
+    },
+    [breakpoints.down("md")]: {
+      bottom: "60%",
+      left: "14%",
     },
   })
 );
