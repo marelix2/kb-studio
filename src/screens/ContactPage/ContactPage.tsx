@@ -2,17 +2,11 @@ import React from "react";
 import { Box, styled, Typography } from "@mui/material";
 
 import { Form } from "./Form";
-import { MobileContactPage } from "./MobileContactPage";
 
 import { emailIcon, phoneIcon } from "@/assets";
 import { PageHeader } from "@/components";
-import { useBreakpoints } from "@/utils";
 
 export const ContactPage = () => {
-  const { isMobile } = useBreakpoints();
-
-  if (isMobile) return <MobileContactPage />;
-
   return (
     <MainContainer>
       <PageHeader title={"MASZ PYTANIE?"} />
@@ -25,7 +19,13 @@ export const ContactPage = () => {
             <FirstSectionHeaderText variant="h3">
               Nie wiesz, który pakiet jest dla Ciebie?
             </FirstSectionHeaderText>
-            <Typography variant="body1" sx={{ pt: 6 }}>
+            <Typography
+              variant="body1"
+              sx={({ breakpoints }) => ({
+                pt: 6,
+                [breakpoints.down("md")]: { pt: 2 },
+              })}
+            >
               Napisz do mnie śmiało, a na wszystko Ci odpowiem.
             </Typography>
           </FirstSectionWrapper>
@@ -54,29 +54,45 @@ export const ContactPage = () => {
   );
 };
 
-const FirstSectionWrapper = styled(Box)(({ theme: { spacing } }) => ({
-  flex: 1,
-  maxHeight: "50%",
-  display: "flex",
-  flexDirection: "column",
-  textAlign: "start",
-  padding: spacing(4),
-}));
+const FirstSectionWrapper = styled(Box)(
+  ({ theme: { spacing, breakpoints } }) => ({
+    flex: 1,
+    maxHeight: "50%",
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "start",
+    padding: spacing(4),
+    [breakpoints.down("md")]: {
+      paddingLeft: spacing(4),
+      paddingRight: spacing(4),
+      paddingTop: spacing(1),
+      paddingBottom: spacing(1),
+    },
+  })
+);
 
 const FirstSectionHeaderText = styled(Typography)(({ theme: { palette } }) => ({
   color: palette.primary.main,
   cursor: "default",
 }));
 
-const SecondSectionWrapper = styled(Box)(({ theme: { spacing } }) => ({
-  flex: 1,
-  maxHeight: "50%",
-  display: "flex",
-  flexDirection: "column",
-  gap: spacing(2),
-  textAlign: "start",
-  padding: spacing(4),
-}));
+const SecondSectionWrapper = styled(Box)(
+  ({ theme: { spacing, breakpoints } }) => ({
+    flex: 1,
+    maxHeight: "50%",
+    display: "flex",
+    flexDirection: "column",
+    gap: spacing(2),
+    textAlign: "start",
+    padding: spacing(4),
+    [breakpoints.down("md")]: {
+      paddingLeft: spacing(4),
+      paddingRight: spacing(4),
+      paddingTop: spacing(2),
+      paddingBottom: spacing(2),
+    },
+  })
+);
 
 const SocialImg = styled("img")(({ theme: {} }) => ({
   width: 32,
@@ -95,7 +111,7 @@ const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
   backgroundColor: palette.primary.light,
 }));
 
-const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const InnerWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   maxWidth: "1920px",
   height: "720px",
   width: "100%",
@@ -103,6 +119,11 @@ const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   display: "flex",
   justifyContent: "center",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+    height: "auto",
+    gap: spacing(2),
+  },
 }));
 
 const FormWrapper = styled(Box)(({ theme: { palette } }) => ({
