@@ -32,8 +32,10 @@ const TitleText = styled(Typography)(({ theme: { breakpoints } }) => ({
   textTransform: "uppercase",
   [breakpoints.down(1441)]: {
     fontSize: 72,
+    lineHeight: 1.2,
   },
-  [breakpoints.down("sm")]: {
-    fontSize: 40,
+  [breakpoints.down("md")]: {
+    fontSize: 28,
+    lineHeight: 1.2,
   },
 }));

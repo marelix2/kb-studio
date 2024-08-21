@@ -1,15 +1,13 @@
 import { Box, styled, Typography } from "@mui/material";
 
-import { MobileStagesPage } from "./MobileStagesPage";
 import { Stage } from "./Stage";
 import { StageHeader } from "./StageHeader";
 
+import { arrowSmall } from "@/assets";
 import { useBreakpoints } from "@/utils";
 
 export const StagesPage = () => {
   const { isMobile } = useBreakpoints();
-
-  if (isMobile) return <MobileStagesPage stages={stages} />;
 
   return (
     <MainContainer id="stages">
@@ -23,9 +21,12 @@ export const StagesPage = () => {
           </StagesWrapper>
           <BottomWrapper>
             <BottomTitleWrapper>
-              <Typography variant="h4">JAK PRACUJĘ?</Typography>
+              <BottomTextHeader variant="h4">JAK PRACUJĘ?</BottomTextHeader>
               <Divider />
-              <Typography variant="h4">HYBRYDOWO</Typography>
+              {isMobile && (
+                <img src={arrowSmall} alt="arrow down" height={150} />
+              )}
+              <BottomTextHeader variant="h4">HYBRYDOWO</BottomTextHeader>
             </BottomTitleWrapper>
             <BottomText variant="body2">
               Oznacza to, że część rzeczy [np. inwentaryzacje, spotkania
@@ -75,27 +76,29 @@ const BundlesWrapper = styled(Box)(({ theme: {} }) => ({
   flexDirection: "column",
   alignItems: "center",
 }));
-const BottomTitleWrapper = styled(Box)(({ theme: { spacing } }) => ({
-  width: "100%",
-  maxWidth: 1600,
-  flex: 1,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-  paddingBottom: spacing(4),
-}));
+const BottomTitleWrapper = styled(Box)(
+  ({ theme: { spacing, breakpoints } }) => ({
+    width: "100%",
+    maxWidth: 1600,
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    paddingBottom: spacing(4),
+    [breakpoints.down("md")]: {
+      flexDirection: "column",
+      gap: spacing(2),
+    },
+  })
+);
 
-const BottomWrapper = styled(Box)(({ theme: { breakpoints, spacing } }) => ({
+const BottomWrapper = styled(Box)(({ theme: { spacing } }) => ({
   width: "100%",
-
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   gap: spacing(2),
   justifyContent: "center",
-  [breakpoints.down("md")]: {
-    height: 150,
-  },
 }));
 
 const BottomText = styled(Typography)(({ theme: { spacing } }) => ({
@@ -116,7 +119,6 @@ const MainContainer = styled(Box)(({ theme: { spacing, palette } }) => ({
 
 const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   maxWidth: "1920px",
-
   width: "100%",
   position: "relative",
   display: "flex",
@@ -125,7 +127,7 @@ const InnerWrapper = styled(Box)(({ theme: { spacing } }) => ({
   gap: spacing(4),
 }));
 
-const Divider = styled(Box)(({ theme: { palette } }) => ({
+const Divider = styled(Box)(({ theme: { palette, breakpoints } }) => ({
   flex: 1,
   maxWidth: 500,
   display: "flex",
@@ -133,11 +135,23 @@ const Divider = styled(Box)(({ theme: { palette } }) => ({
   borderTopColor: palette.primary.dark,
   borderTopWidth: 1,
   borderTopStyle: "solid",
+  [breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
-const StagesWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const StagesWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-evenly",
   gap: spacing(6),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+    paddingBottom: 100,
+  },
+}));
+
+const BottomTextHeader = styled(Typography)(({ theme: {} }) => ({
+  fontFamily: `"Montserrat", sans-serif`,
+  textTransform: "uppercase",
 }));
