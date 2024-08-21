@@ -8,7 +8,7 @@ import { PageHeader } from "@/components";
 
 export const ContactPage = () => {
   return (
-    <MainContainer>
+    <MainContainer id="contact">
       <PageHeader title={"MASZ PYTANIE?"} />
       <InnerWrapper>
         <Box flex={1}>
