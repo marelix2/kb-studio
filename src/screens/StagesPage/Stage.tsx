@@ -27,19 +27,27 @@ export const Stage = ({ title, bulletPoints }: Props) => {
   );
 };
 
-const StageWrapper = styled(Box)(({ theme: {} }) => ({
+const StageWrapper = styled(Box)(({ theme: { breakpoints } }) => ({
   flex: 1,
   width: 420,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  [breakpoints.down("md")]: {
+    maxWidth: 320,
+    width: "100%",
+  },
 }));
 
-const TitleWrapper = styled(Box)(({ theme: {} }) => ({
+const TitleWrapper = styled(Box)(({ theme: { breakpoints } }) => ({
   width: 420,
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-start",
+  [breakpoints.down("md")]: {
+    maxWidth: 320,
+    width: "100%",
+  },
 }));
 
 const Title = styled(Typography)(({ theme: { palette, spacing } }) => ({
@@ -51,19 +59,23 @@ const Title = styled(Typography)(({ theme: { palette, spacing } }) => ({
   fontWeight: 700,
 }));
 
-const BulletPointsWrapper = styled(Box)(({ theme: { palette, spacing } }) => ({
-  paddingTop: spacing(4),
-  width: "100%",
-  height: `calc(400px - ${spacing(4)})`,
-  backgroundColor: palette.common.white,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: spacing(2),
-}));
+const BulletPointsWrapper = styled(Box)(
+  ({ theme: { palette, spacing, breakpoints } }) => ({
+    paddingTop: spacing(4),
+    width: "100%",
+    height: `calc(400px - ${spacing(4)})`,
+    backgroundColor: palette.common.white,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: spacing(2),
+    [breakpoints.down("md")]: {
+      height: "auto",
+    },
+  })
+);
 
 const BulletPointText = styled(Typography)(({ theme: { palette } }) => ({
-  width: 420,
   cursor: "default",
   listStyleType: "circle",
   color: palette.text.primary,

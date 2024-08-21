@@ -16,8 +16,6 @@ const INSTAGRAM_LINK = `https://www.instagram.com/studioprojektowe_kb`;
 export const LandingPage = () => {
   const { isMobile } = useBreakpoints();
 
-  // if (isMobile) return <MobileLandingPage />;
-
   return (
     <MainContainer id="hero">
       <InnerWrapper>
