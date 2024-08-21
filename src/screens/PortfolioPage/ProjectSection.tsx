@@ -46,33 +46,42 @@ export const ProjectSection = ({
 
 const SectionWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isFirst",
-})<{ isFirst: boolean }>(({ theme: { palette, spacing }, isFirst }) => ({
-  width: "100%",
-  height: "fit-content",
-  minHeight: 450,
+})<{ isFirst: boolean }>(
+  ({ theme: { palette, spacing, breakpoints }, isFirst }) => ({
+    width: "100%",
+    height: "fit-content",
+    minHeight: 450,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: spacing(4),
+    paddingBottom: spacing(4),
+    borderTopWidth: isFirst ? 0 : 1,
+    borderTopStyle: "solid",
+    borderTopColor: palette.text.primary,
+    [breakpoints.down("md")]: {
+      flexDirection: "column",
+      minHeight: 300,
+    },
+  })
+);
 
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  paddingTop: spacing(4),
-  paddingBottom: spacing(4),
-  borderTopWidth: isFirst ? 0 : 1,
-  borderTopStyle: "solid",
-  borderTopColor: palette.text.primary,
-}));
-
-const PhotosWrapper = styled(Box)(({ theme: { spacing } }) => ({
+const PhotosWrapper = styled(Box)(({ theme: { spacing, breakpoints } }) => ({
   flex: 1,
   display: "flex",
   minHeight: 450,
   alignItems: "center",
   justifyContent: "flex-start",
   gap: spacing(4),
+  [breakpoints.down("md")]: {
+    flexDirection: "column",
+    minHeight: 250,
+  },
 }));
 
 const CommentWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isLastOne" && prop !== "index",
-})<{ index: number }>(({ theme: { spacing }, index }) => ({
+})<{ index: number }>(({ theme: { spacing, breakpoints }, index }) => ({
   flex: 1,
   minHeight: `calc(450px - ${index === 1 ? spacing(4) : "0px"})`,
   paddingLeft: spacing(4),
@@ -81,6 +90,9 @@ const CommentWrapper = styled(Box, {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  [breakpoints.down("md")]: {
+    minHeight: `calc(200px - ${index === 1 ? spacing(4) : "0px"})`,
+  },
 }));
 
 const CommentInnerWrapper = styled(Box, {
@@ -118,5 +130,8 @@ const Image = styled("img")(({ theme: { breakpoints } }) => ({
   width: 750,
   [breakpoints.down(1600)]: {
     width: 650,
+  },
+  [breakpoints.down("md")]: {
+    width: 300,
   },
 }));
