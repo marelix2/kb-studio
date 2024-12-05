@@ -7,6 +7,7 @@ import {
   instagramIcon,
   instagramMobileIcon,
   Landing1,
+  Landing2,
 } from "@/assets";
 import { openInNewTab, useBreakpoints } from "@/utils";
 
@@ -19,7 +20,7 @@ export const LandingPage = () => {
   return (
     <MainContainer id="hero">
       <InnerWrapper>
-        <ImageContainer />
+        {isMobile ? <MobileImageContainer /> : <ImageContainer />}
         <LeftContainer>
           <TopBox>
             <HeroText variant="h1" color="primary">
@@ -102,6 +103,19 @@ const SocialsBox = styled(Box)(({ theme: { spacing } }) => ({
   display: "flex",
   justifyContent: "space-between",
   gap: spacing(4),
+}));
+
+const MobileImageContainer = styled(Box)(({ theme: { breakpoints } }) => ({
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${Landing2})`,
+  backgroundSize: "cover",
+  backgroundPosition: "50% 59%",
+  [breakpoints.down("md")]: {
+    height: 390,
+  },
 }));
 
 const ImageContainer = styled(Box)(({ theme: { breakpoints } }) => ({
