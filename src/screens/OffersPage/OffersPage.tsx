@@ -63,7 +63,7 @@ const offers = [
     bulletPoints: [
       {
         title: `wycena za metr kwadratowy`,
-        cost: "150 - 200 zł/m2",
+        cost: "180 - 200 zł/m2",
       },
     ],
     arrowType: "medium",
